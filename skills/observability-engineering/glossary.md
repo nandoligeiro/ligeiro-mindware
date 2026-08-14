@@ -1,0 +1,25 @@
+# Glossário de Observability Engineering
+
+- **Alert fatigue**: dessensibilização causada por alertas ruidosos, frequentes ou pouco acionáveis.
+- **Burn rate**: velocidade de consumo do error budget.
+- **Cardinality**: número de valores distintos em um campo.
+- **Collector**: componente OpenTelemetry que recebe, processa e exporta telemetria.
+- **Dimension**: atributo usado para filtrar, agrupar ou comparar eventos.
+- **Distributed tracing**: técnica para acompanhar uma operação através de múltiplos serviços.
+- **Error budget**: quantidade aceitável de falha antes de violar um SLO.
+- **Event**: registro estruturado de algo que aconteceu em um ponto de execução.
+- **High cardinality**: campo com muitos valores únicos, como usuário, tenant ou request.
+- **High dimensionality**: muitos atributos disponíveis para análise em cada evento.
+- **Instrumentation**: código/configuração que emite telemetria.
+- **Monitoring**: prática de observar condições conhecidas e thresholds predefinidos.
+- **Observability**: capacidade de entender estados internos de um sistema a partir de seus sinais externos.
+- **Observability-driven development**: prática de usar instrumentação e análise desde o ciclo de desenvolvimento.
+- **OpenTelemetry / OTel**: padrão e ecossistema aberto para geração, coleta e exportação de telemetria.
+- **Sampling**: seleção de subconjunto representativo de eventos/traces para reduzir volume.
+- **Service Level Indicator / SLI**: medida de experiência ou confiabilidade.
+- **Service Level Objective / SLO**: objetivo definido para um SLI.
+- **Span**: unidade de trabalho dentro de um trace.
+- **Structured event**: evento com campos/atributos consultáveis.
+- **Telemetry pipeline**: caminho e processamento da telemetria entre produtores e consumidores.
+- **Trace**: conjunto de spans relacionados por causalidade.
+- **Wide event**: evento com muitos campos contextuais úteis.
