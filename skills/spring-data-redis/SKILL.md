@@ -5,7 +5,7 @@ metadata:
   short-description: Spring Data Redis operacional
 ---
 
-# Spring Data Redis — Cocérebro
+# Spring Data Redis — Ligeiro Mindware
 
 Use esta skill para projetar, implementar e debugar uso de Redis em aplicações Spring.
 
@@ -13,7 +13,6 @@ Use esta skill para projetar, implementar e debugar uso de Redis em aplicações
 
 - `https://spring.io/projects/spring-data-redis/`
 - `https://docs.spring.io/spring-data/redis/reference/`
-- Snapshot: `sources/spring-data-redis-sources.md`
 
 ## Como Pensar
 
