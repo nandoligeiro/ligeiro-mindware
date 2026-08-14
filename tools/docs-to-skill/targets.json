@@ -36,5 +36,55 @@
         "url": "https://docs.spring.io/spring-framework/reference/languages.html"
       }
     ]
+  },
+  "spring-kafka": {
+    "name": "Spring for Apache Kafka",
+    "version_hint": "4.1.x",
+    "sources": [
+      {
+        "title": "Project page",
+        "url": "https://spring.io/projects/spring-kafka/"
+      },
+      {
+        "title": "Reference",
+        "url": "https://docs.spring.io/spring-kafka/reference/"
+      }
+    ]
+  },
+  "spring-security": {
+    "name": "Spring Security",
+    "version_hint": "7.1.x",
+    "sources": [
+      {
+        "title": "Project page",
+        "url": "https://spring.io/projects/spring-security/"
+      },
+      {
+        "title": "Reference",
+        "url": "https://docs.spring.io/spring-security/reference/"
+      }
+    ]
+  },
+  "spring-data": {
+    "name": "Spring Data",
+    "version_hint": "2026.0.x",
+    "sources": [
+      {
+        "title": "Project page",
+        "url": "https://spring.io/projects/spring-data/"
+      },
+      {
+        "title": "Spring Data Commons Reference",
+        "url": "https://docs.spring.io/spring-data/commons/reference/"
+      },
+      {
+        "title": "Spring Data JPA Reference",
+        "url": "https://docs.spring.io/spring-data/jpa/reference/"
+      },
+      {
+        "title": "Spring Data MongoDB Reference",
+        "url": "https://docs.spring.io/spring-data/mongodb/reference/"
+      }
+    ]
   }
 }
