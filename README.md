@@ -29,11 +29,9 @@ ligeiro-mindware/
 │       ├── glossary.md
 │       ├── patterns.md
 │       └── chapters/
-├── tools/
-│   ├── book-to-skill/
-│   └── docs-to-skill/
-└── sources/
-    └── README.md
+└── tools/
+    ├── book-to-skill/
+    └── docs-to-skill/
 ```
 
 ## Fluxo para novas skills
@@ -70,11 +68,13 @@ Depois, reinicie o Codex para carregar a nova skill.
 - **Curadoria humana:** automação acelera; julgamento continua sendo responsabilidade de quem usa.
 - **Respeito às fontes:** síntese e transformação não significam redistribuição indevida.
 
-## Privacidade e direitos autorais
+## Política para o repositório público
 
-Este repositório deve permanecer privado. As skills podem conter sínteses estruturais de livros comerciais, documentações restritas ou materiais internos.
+Este repositório contém material autoral, referências públicas e sínteses transformativas. As skills não substituem as fontes originais e não devem reproduzir trechos extensos de livros, cursos ou documentações protegidas.
 
-Não versione PDFs, EPUBs, exports privados, credenciais, dados sensíveis ou qualquer arquivo-fonte que não possa ser redistribuído legalmente.
+Não versione PDFs, EPUBs, exports privados, credenciais, dados pessoais, documentos internos, snapshots integrais de documentação ou qualquer arquivo-fonte que não possa ser redistribuído legalmente. Consulte sempre a licença e os termos da fonte antes de reutilizar o conteúdo.
+
+O arquivo `LICENSE` cobre apenas código, ferramentas e outros artefatos originais explicitamente produzidos neste projeto. Marcas, APIs, livros, documentações e demais conteúdos de terceiros permanecem sujeitos aos seus respectivos titulares e termos.
 
 ---
 
