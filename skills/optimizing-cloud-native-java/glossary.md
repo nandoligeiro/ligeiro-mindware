@@ -1,0 +1,27 @@
+# Glossário
+
+- **Amdahl’s Law**: limite teórico de speedup ao paralelizar parte de um sistema.
+- **Allocation rate**: velocidade com que objetos são alocados.
+- **CDS**: Class Data Sharing, técnica para reduzir startup/memória.
+- **cgroups**: mecanismo Linux usado por containers para limitar recursos.
+- **Code cache**: área onde HotSpot guarda código compilado pelo JIT.
+- **Concurrent GC**: coletor que faz parte do trabalho junto da aplicação.
+- **Deoptimization**: reversão de código compilado para execução menos otimizada.
+- **G1**: Garbage-First, coletor padrão em muitos JDKs modernos.
+- **GC pause**: período stop-the-world associado à coleta.
+- **GraalVM Native Image**: compilação ahead-of-time para binário nativo.
+- **Heap**: área de memória para objetos Java.
+- **HotSpot**: JVM de produção mais comum no OpenJDK.
+- **JFR**: Java Flight Recorder, gravação de eventos JVM de baixo overhead.
+- **JIT**: just-in-time compilation, compilação dinâmica de código quente.
+- **JMH**: Java Microbenchmark Harness.
+- **JMX**: Java Management Extensions.
+- **Live set**: objetos vivos que precisam permanecer após coleta.
+- **Micrometer**: fachada de métricas para aplicações Java.
+- **OpenTelemetry**: padrão aberto para traces, métricas, logs e contexto.
+- **Premature promotion**: promoção cedo demais de objetos para geração antiga.
+- **Safepoint**: ponto em que threads Java podem parar para operações da JVM.
+- **Shenandoah**: coletor de baixa pausa com trabalho concorrente.
+- **Tiered compilation**: estratégia que usa níveis de compilação/interpretação.
+- **Virtual threads**: threads leves da plataforma Java para concorrência IO-bound.
+- **ZGC**: coletor de baixa pausa e escalável.
