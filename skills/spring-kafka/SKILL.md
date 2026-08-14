@@ -5,7 +5,7 @@ metadata:
   short-description: Spring for Apache Kafka operacional
 ---
 
-# Spring for Apache Kafka — Cocérebro
+# Spring for Apache Kafka — Ligeiro Mindware
 
 Use esta skill para projetar, implementar e debugar aplicações Spring que produzem, consomem e processam mensagens Kafka.
 
@@ -13,7 +13,6 @@ Use esta skill para projetar, implementar e debugar aplicações Spring que prod
 
 - `https://spring.io/projects/spring-kafka/`
 - `https://docs.spring.io/spring-kafka/reference/`
-- Snapshot: `sources/spring-kafka-sources.md`
 
 ## Como Pensar
 
