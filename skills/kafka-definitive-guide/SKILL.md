@@ -1,11 +1,11 @@
 ---
 name: kafka-definitive-guide
-description: "Cocérebro privado para aplicar Kafka: arquitetura pub/sub, tópicos, partições, brokers, producers, consumers, consumer groups, AdminClient, internals, replication, reliability, exactly-once semantics, Kafka Connect, MirrorMaker, segurança, administração, monitoramento e Kafka Streams. Use quando o usuário quiser desenhar, operar, debugar, configurar ou evoluir sistemas baseados em Apache Kafka."
+description: "Ligeiro Mindware para aplicar Kafka: arquitetura pub/sub, tópicos, partições, brokers, producers, consumers, consumer groups, AdminClient, internals, replication, reliability, exactly-once semantics, Kafka Connect, MirrorMaker, segurança, administração, monitoramento e Kafka Streams. Use quando o usuário quiser desenhar, operar, debugar, configurar ou evoluir sistemas baseados em Apache Kafka."
 metadata:
   short-description: Guia operacional e arquitetural de Apache Kafka
 ---
 
-# Kafka: The Definitive Guide — Cocérebro
+# Kafka: The Definitive Guide — Ligeiro Mindware
 
 Use este skill como parceiro de arquitetura e operação Kafka. O foco é tomar decisões corretas sobre design de tópicos, produtores, consumidores, confiabilidade, segurança, operação e stream processing.
 
@@ -16,7 +16,7 @@ Use este skill como parceiro de arquitetura e operação Kafka. O foco é tomar 
 - Sempre explique trade-offs; Kafka é configurável o suficiente para ficar perigoso.
 - Diferencie garantias: at-most-once, at-least-once, effectively-once/idempotência e exactly-once processing.
 - Não recomende “a configuração perfeita” sem workload, SLA e failure model.
-- Evite reproduzir trechos extensos do livro; esta skill é um mapa operacional privado.
+- Evite reproduzir trechos extensos do livro; esta skill é um mapa operacional autoral.
 
 ## Tese Central
 
