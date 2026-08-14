@@ -84,6 +84,24 @@
       {
         "title": "Spring Data MongoDB Reference",
         "url": "https://docs.spring.io/spring-data/mongodb/reference/"
+      },
+      {
+        "title": "Spring Data Redis Reference",
+        "url": "https://docs.spring.io/spring-data/redis/reference/"
+      }
+    ]
+  },
+  "spring-data-redis": {
+    "name": "Spring Data Redis",
+    "version_hint": "4.1.x",
+    "sources": [
+      {
+        "title": "Project page",
+        "url": "https://spring.io/projects/spring-data-redis/"
+      },
+      {
+        "title": "Reference",
+        "url": "https://docs.spring.io/spring-data/redis/reference/"
       }
     ]
   }

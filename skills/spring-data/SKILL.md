@@ -15,6 +15,7 @@ Use esta skill para escolher e aplicar Spring Data em persistência relacional, 
 - `https://docs.spring.io/spring-data/commons/reference/`
 - `https://docs.spring.io/spring-data/jpa/reference/`
 - `https://docs.spring.io/spring-data/mongodb/reference/`
+- `https://docs.spring.io/spring-data/redis/reference/`
 - Snapshot: `sources/spring-data-sources.md`
 
 ## Como Pensar
@@ -26,6 +27,7 @@ Spring Data fornece um modelo familiar de repositórios, query derivation, mapea
 - Commons, repositories e queries: `chapters/commons-repositories.md`
 - JPA, JDBC/R2DBC e transações: `chapters/relational.md`
 - MongoDB/NoSQL, auditing e projections: `chapters/nosql-mapping.md`
+- Redis, cache e estruturas chave-valor: `chapters/redis-overview.md`
 - Decisões rápidas: `cheatsheet.md`
 - Padrões e anti-padrões: `patterns.md`
 - Termos: `glossary.md`
@@ -39,6 +41,7 @@ Spring Data fornece um modelo familiar de repositórios, query derivation, mapea
 5. Transação existe e é local/distribuída?
 6. Precisa auditing, projections, pagination, scrolling ou events?
 7. Query method está claro ou virando linguagem secreta?
+8. Redis será cache, key-value store, pub/sub, streams, rate limit ou lock?
 
 ## Regras Práticas
 
@@ -46,5 +49,6 @@ Spring Data fornece um modelo familiar de repositórios, query derivation, mapea
 - Query derivation é ótima até ficar ilegível.
 - Custom repository é melhor que método monstruoso.
 - JPA não é JDBC; Mongo não é JPA; preserve semântica do datastore.
+- Redis não é só cache; escolha explicitamente entre template, cache abstraction, repositories, pub/sub ou streams.
 - Reactive repository só faz sentido com stack e driver reativos.
 - Auditing exige modelo de ownership/tempo claro.
