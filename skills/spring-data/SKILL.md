@@ -5,7 +5,7 @@ metadata:
   short-description: Spring Data operacional
 ---
 
-# Spring Data — Cocérebro
+# Spring Data — Ligeiro Mindware
 
 Use esta skill para escolher e aplicar Spring Data em persistência relacional, reativa e NoSQL.
 
@@ -16,7 +16,6 @@ Use esta skill para escolher e aplicar Spring Data em persistência relacional, 
 - `https://docs.spring.io/spring-data/jpa/reference/`
 - `https://docs.spring.io/spring-data/mongodb/reference/`
 - `https://docs.spring.io/spring-data/redis/reference/`
-- Snapshot: `sources/spring-data-sources.md`
 
 ## Como Pensar
 
