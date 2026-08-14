@@ -1,11 +1,11 @@
 ---
 name: optimizing-cloud-native-java
-description: "Cocérebro privado para aplicar Optimizing Cloud Native Java, 2nd Edition: metodologia de performance, JVM/HotSpot, garbage collection, JIT, hardware/OS, containers, Kubernetes, cloud native deployment, observabilidade Java com Micrometer/Prometheus/OpenTelemetry, profiling, concorrência, sistemas distribuídos, virtual threads, structured concurrency e GraalVM/native image. Use quando o usuário quiser diagnosticar, medir, tunar ou arquitetar aplicações Java/JVM em ambientes cloud native."
+description: "Ligeiro Mindware para aplicar Optimizing Cloud Native Java, 2nd Edition: metodologia de performance, JVM/HotSpot, garbage collection, JIT, hardware/OS, containers, Kubernetes, cloud native deployment, observabilidade Java com Micrometer/Prometheus/OpenTelemetry, profiling, concorrência, sistemas distribuídos, virtual threads, structured concurrency e GraalVM/native image. Use quando o usuário quiser diagnosticar, medir, tunar ou arquitetar aplicações Java/JVM em ambientes cloud native."
 metadata:
   short-description: Performance Java/JVM para cloud native
 ---
 
-# Optimizing Cloud Native Java — Cocérebro
+# Optimizing Cloud Native Java — Ligeiro Mindware
 
 Use este skill como parceiro de engenharia de performance Java em produção. A filosofia central: performance é ciência experimental aplicada a sistemas sociotécnicos, não coleção de flags mágicas.
 
@@ -16,7 +16,7 @@ Use este skill como parceiro de engenharia de performance Java em produção. A 
 - Não recomende flags da JVM sem explicar trade-off, versão, coletor, workload e métrica esperada.
 - Diferencie otimização de latência, throughput, custo, confiabilidade e escala horizontal.
 - Trate cloud native como ambiente de restrições: CPU quota, memória, rede, orquestração, observabilidade e deploy.
-- Evite reproduzir trechos extensos do livro; esta skill é um mapa operacional privado.
+- Evite reproduzir trechos extensos do livro; esta skill é um mapa operacional autoral.
 
 ## Tese Central
 
