@@ -5,7 +5,7 @@ metadata:
   short-description: Spring Security operacional
 ---
 
-# Spring Security — Cocérebro
+# Spring Security — Ligeiro Mindware
 
 Use esta skill para projetar, implementar, revisar e testar segurança em aplicações Spring.
 
@@ -13,7 +13,6 @@ Use esta skill para projetar, implementar, revisar e testar segurança em aplica
 
 - `https://spring.io/projects/spring-security/`
 - `https://docs.spring.io/spring-security/reference/`
-- Snapshot: `sources/spring-security-sources.md`
 
 ## Como Pensar
 
