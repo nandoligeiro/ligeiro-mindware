@@ -1,0 +1,29 @@
+# Source documents / copyrighted or private material
+sources/
+*.pdf
+*.epub
+*.mobi
+*.azw
+*.azw3
+*.docx
+*.rtf
+
+# Extraction/temp outputs
+book_skill_work/
+full_text.txt
+metadata.json
+*.tmp
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/

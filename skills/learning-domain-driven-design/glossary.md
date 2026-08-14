@@ -1,0 +1,26 @@
+# Glossário DDD
+
+- **Active Record**: padrão que combina dados persistidos e operações simples no mesmo objeto.
+- **Aggregate**: cluster de objetos tratado como unidade de consistência e modificação.
+- **Anticorruption Layer**: camada que traduz/protege um modelo local de um modelo externo.
+- **Bounded Context**: fronteira explícita onde uma linguagem ubíqua e um modelo são consistentes.
+- **Business Domain**: área de atividade do negócio em que a organização atua.
+- **Conformist**: relação em que um downstream adota o modelo do upstream.
+- **Context Map**: mapa das relações entre bounded contexts.
+- **Core Subdomain**: subdomínio que gera vantagem competitiva.
+- **CQRS**: separação entre modelos de comando/escrita e consulta/leitura.
+- **Data Mesh**: abordagem que organiza dados analíticos como produtos orientados por domínio.
+- **Domain Event**: fato relevante do domínio, expresso na linguagem do negócio.
+- **Domain Model**: modelo comportamental rico que representa regras e invariantes de negócio.
+- **Event Sourcing**: persistência do histórico de eventos como fonte da verdade.
+- **EventStorming**: workshop colaborativo para descobrir processos, eventos, comandos, atores e políticas.
+- **Generic Subdomain**: capacidade comum, sem diferenciação estratégica.
+- **Open-Host Service**: serviço com protocolo público e estável para múltiplos consumidores.
+- **Partnership**: relação colaborativa estreita entre contexts/times.
+- **Published Language**: linguagem/contrato formal para integração.
+- **Separate Ways**: decisão de não integrar quando o custo de integração supera o benefício.
+- **Shared Kernel**: pequena parte compartilhada do modelo/código entre contexts.
+- **Supporting Subdomain**: capacidade necessária, específica, mas não diferencial.
+- **Transaction Script**: lógica organizada em procedimentos por caso de uso.
+- **Ubiquitous Language**: linguagem compartilhada entre negócio e tecnologia.
+- **Value Object**: objeto definido por valor, sem identidade própria.
