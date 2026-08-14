@@ -3,14 +3,13 @@ name: ports-and-adapters
 description: "Cocérebro baseado no NotebookLM Arquitetura Hexagonal: Prática e Sustentabilidade de Aplicações. Use quando o usuário quiser projetar, revisar, refatorar ou explicar Ports and Adapters / Arquitetura Hexagonal; isolar domínio de frameworks, banco, HTTP e mensageria; comparar controller-service-persistence com domínio/portas/adaptadores; desenhar APIs e SPIs; implementar em Java/Spring Boot; criar testes com stubs; ou avaliar acoplamento, dependências e anti-padrões arquiteturais."
 ---
 
-# Ports and Adapters — Cocérebro
+# Ports and Adapters — Ligeiro Mindware
 
 Use esta skill para proteger lógica de negócio por meio de arquitetura hexagonal: domínio no centro, portas como contratos e adaptadores como tradução técnica.
 
-## Fonte
+## Referências
 
-- NotebookLM: `https://notebooklm.google.com/notebook/7fa36b45-2fa9-4945-8774-d3c038829acc`
-- Nota de extração: `sources/ports-and-adapters-notebooklm-sources.md`
+Esta skill é uma síntese autoral de arquitetura hexagonal. Consulte as referências oficiais do projeto e adapte os exemplos ao seu contexto.
 
 ## Como Pensar
 
