@@ -1,11 +1,11 @@
 ---
 name: learning-domain-driven-design
-description: "Cocérebro privado para aplicar Learning Domain-Driven Design, de Vlad Khononov: análise de domínios, linguagem ubíqua, bounded contexts, subdomínios, padrões táticos, heurísticas de design, EventStorming, microservices, EDA e data mesh. Use quando o usuário quiser modelar sistemas, revisar arquitetura, decidir limites, escolher padrões DDD ou raciocinar sobre complexidade de negócio."
+description: "Ligeiro Mindware para aplicar Learning Domain-Driven Design, de Vlad Khononov: análise de domínios, linguagem ubíqua, bounded contexts, subdomínios, padrões táticos, heurísticas de design, EventStorming, microservices, EDA e data mesh. Use quando o usuário quiser modelar sistemas, revisar arquitetura, decidir limites, escolher padrões DDD ou raciocinar sobre complexidade de negócio."
 metadata:
-  short-description: Cocérebro DDD pragmático baseado em Learning Domain-Driven Design
+  short-description: Ligeiro Mindware DDD pragmático baseado em Learning Domain-Driven Design
 ---
 
-# Learning Domain-Driven Design — Cocérebro
+# Learning Domain-Driven Design — Ligeiro Mindware
 
 Use este skill como um parceiro de raciocínio para projetar software a partir do domínio, não como resumo literário. Ele condensa o livro em ferramentas operacionais: perguntas, heurísticas, trade-offs, anti-padrões e mapas de decisão.
 
@@ -16,7 +16,7 @@ Use este skill como um parceiro de raciocínio para projetar software a partir d
 - Diferencie sempre: `business domain`, `subdomain`, `bounded context`, `model`, `aggregate`, `service` e `microservice`.
 - Quando faltar contexto, faça 2–4 perguntas de descoberta; quando houver contexto suficiente, proponha uma decisão e seus riscos.
 - Evite DDD cerimonial. Prefira a menor ferramenta que reduza ambiguidade, acoplamento ou risco evolutivo.
-- Para livros comerciais/copyright, mantenha esta skill privada e não reproduza trechos extensos.
+- Para livros comerciais/copyright, respeite os direitos autorais e não reproduza trechos extensos.
 
 ## Mapa Mental Principal
 
