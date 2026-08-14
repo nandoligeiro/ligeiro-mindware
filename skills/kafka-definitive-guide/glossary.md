@@ -1,0 +1,29 @@
+# Glossário Kafka
+
+- **ACK / acks**: confirmação exigida do broker antes de considerar escrita bem-sucedida.
+- **ACL**: regra de autorização para usuários/principals e recursos.
+- **AdminClient**: API Java para administrar tópicos, configs, ACLs e cluster.
+- **Broker**: servidor Kafka que armazena partições e atende clients.
+- **Commit**: gravação da posição consumida por um consumer group.
+- **Consumer**: client que lê registros de tópicos.
+- **Consumer group**: conjunto de consumers que divide partições de tópicos.
+- **Controller**: broker/control plane responsável por decisões administrativas do cluster.
+- **Exactly-once semantics**: processamento sem duplicação observável em cenários suportados.
+- **Follower replica**: réplica que copia dados do leader.
+- **Idempotent producer**: producer que evita duplicatas causadas por retry.
+- **ISR**: in-sync replicas, réplicas atualizadas o suficiente para eleição/acks.
+- **Kafka Connect**: framework para conectores source/sink.
+- **Kafka Streams**: biblioteca Java para processamento de streams.
+- **KRaft**: modo de metadata quorum baseado em Raft, substituindo ZooKeeper em versões modernas.
+- **Leader replica**: réplica que atende reads/writes de uma partition.
+- **MirrorMaker**: ferramenta para replicação entre clusters Kafka.
+- **Offset**: posição de um registro dentro de uma partition.
+- **Partition**: divisão ordenada de um tópico; unidade de paralelismo e ordering.
+- **Producer**: client que escreve registros em tópicos.
+- **Rebalance**: redistribuição de partições entre consumers de um group.
+- **Replication factor**: número de réplicas por partition.
+- **Retention**: política de tempo/tamanho para manter registros.
+- **Schema Registry**: serviço/ecossistema para versionar schemas.
+- **Topic**: log nomeado de eventos/registros.
+- **Transaction**: mecanismo Kafka para agrupar writes e offset commits atomicamente em cenários suportados.
+- **ZooKeeper**: sistema usado por versões Kafka antigas para metadata/coordenação.
