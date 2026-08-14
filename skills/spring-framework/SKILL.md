@@ -5,9 +5,9 @@ metadata:
   short-description: Guia operacional do Spring Framework oficial
 ---
 
-# Spring Framework — Cocérebro
+# Spring Framework — Ligeiro Mindware
 
-Use este skill como parceiro para tomar decisões sobre Spring Framework, com base na documentação oficial capturada em `sources/spring-framework-sources.md`.
+Use este skill como parceiro para tomar decisões sobre Spring Framework, com base na documentação oficial do Spring Framework.
 
 ## Fontes Oficiais
 
@@ -26,7 +26,7 @@ Use este skill como parceiro para tomar decisões sobre Spring Framework, com ba
 - Diferencie Spring Framework de Spring Boot: Boot auto-configura; Framework fornece os blocos fundamentais.
 - Prefira design explícito, testável e idiomático.
 - Quando houver várias opções, explique trade-offs: anotação vs programação, MVC vs WebFlux, declarative vs programmatic transactions.
-- Para detalhes versionados, recomende verificar a documentação oficial e o snapshot em `sources/`.
+- Para detalhes versionados, recomende verificar a documentação oficial do projeto.
 
 ## Mapa Mental
 
