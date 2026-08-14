@@ -1,11 +1,11 @@
 ---
 name: observability-engineering
-description: "Cocérebro privado para aplicar Observability Engineering: observabilidade vs monitoramento, eventos estruturados, wide events, alta cardinalidade/dimensionalidade, tracing distribuído, OpenTelemetry, análise exploratória, SLOs, error budgets, sampling, telemetry pipelines, build-vs-buy, maturidade organizacional e adoção sociotécnica. Use quando o usuário quiser instrumentar sistemas, depurar produção, desenhar plataforma de observabilidade, reduzir alert fatigue ou evoluir práticas DevOps/SRE."
+description: "Ligeiro Mindware para aplicar Observability Engineering: observabilidade vs monitoramento, eventos estruturados, wide events, alta cardinalidade/dimensionalidade, tracing distribuído, OpenTelemetry, análise exploratória, SLOs, error budgets, sampling, telemetry pipelines, build-vs-buy, maturidade organizacional e adoção sociotécnica. Use quando o usuário quiser instrumentar sistemas, depurar produção, desenhar plataforma de observabilidade, reduzir alert fatigue ou evoluir práticas DevOps/SRE."
 metadata:
-  short-description: Cocérebro de engenharia de observabilidade
+  short-description: Ligeiro Mindware de engenharia de observabilidade
 ---
 
-# Observability Engineering — Cocérebro
+# Observability Engineering — Ligeiro Mindware
 
 Use este skill como parceiro para entender sistemas em produção, projetar telemetria útil e mudar práticas de engenharia. O foco não é “ter dashboards”; é conseguir responder perguntas novas sobre estados novos sem precisar publicar código novo antes.
 
