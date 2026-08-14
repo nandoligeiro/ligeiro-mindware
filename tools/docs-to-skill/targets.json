@@ -1,0 +1,40 @@
+{
+  "spring-framework": {
+    "name": "Spring Framework",
+    "version_hint": "7.0.x",
+    "sources": [
+      {
+        "title": "Project page",
+        "url": "https://spring.io/projects/spring-framework/"
+      },
+      {
+        "title": "Reference: Core Technologies",
+        "url": "https://docs.spring.io/spring-framework/reference/core.html"
+      },
+      {
+        "title": "Reference: Data Access",
+        "url": "https://docs.spring.io/spring-framework/reference/data-access.html"
+      },
+      {
+        "title": "Reference: Web on Servlet Stack",
+        "url": "https://docs.spring.io/spring-framework/reference/web.html"
+      },
+      {
+        "title": "Reference: Web on Reactive Stack",
+        "url": "https://docs.spring.io/spring-framework/reference/web-reactive.html"
+      },
+      {
+        "title": "Reference: Testing",
+        "url": "https://docs.spring.io/spring-framework/reference/testing.html"
+      },
+      {
+        "title": "Reference: Integration",
+        "url": "https://docs.spring.io/spring-framework/reference/integration.html"
+      },
+      {
+        "title": "Reference: Languages",
+        "url": "https://docs.spring.io/spring-framework/reference/languages.html"
+      }
+    ]
+  }
+}

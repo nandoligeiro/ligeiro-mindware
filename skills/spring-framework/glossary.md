@@ -1,0 +1,21 @@
+# Glossário Spring Framework
+
+- **AOP**: programação orientada a aspectos para cross-cutting concerns.
+- **ApplicationContext**: container Spring principal, extensão do `BeanFactory`.
+- **Bean**: objeto gerenciado pelo container Spring.
+- **BeanFactory**: interface base do container IoC.
+- **BeanPostProcessor**: extensão para customizar beans antes/depois da inicialização.
+- **Controller Advice**: mecanismo para tratamento transversal de controllers.
+- **Dependency Injection**: fornecimento externo de dependências de um objeto.
+- **DispatcherServlet**: front controller do Spring MVC.
+- **Environment**: abstração de profiles e propriedades.
+- **IoC Container**: container que cria, configura e gerencia objetos.
+- **MockMvc**: ferramenta para testar Spring MVC sem servidor real.
+- **PlatformTransactionManager**: abstração central de transações.
+- **Proxy**: objeto intermediário usado para AOP, transações, cache etc.
+- **SpEL**: Spring Expression Language.
+- **TestContext Framework**: infraestrutura de testes de integração Spring.
+- **TransactionTemplate**: API programática para transações.
+- **WebClient**: cliente HTTP reativo/non-blocking.
+- **WebFlux**: stack web reativa do Spring.
+- **WebTestClient**: cliente de teste para WebFlux e endpoints HTTP.
