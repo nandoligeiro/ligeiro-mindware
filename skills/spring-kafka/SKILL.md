@@ -17,7 +17,7 @@ Use esta skill para projetar, implementar e debugar aplicações Spring que prod
 
 ## Como Pensar
 
-Spring Kafka aplica conceitos Spring ao Kafka: `KafkaTemplate` para envio, `@KafkaListener` para consumo orientado a POJO, listener containers para lifecycle/concurrency, `KafkaTransactionManager` para transações e recursos de retry/DLT para resiliência.
+Spring Kafka aplica conceitos Spring ao Kafka: `KafkaTemplate` para envio, `@KafkaListener` para consumo orientado a POJO, listener containers para lifecycle/concurrency, `KafkaTransactionManager` para transações e recursos como `@RetryableTopic`/DLT para resiliência.
 
 ## Carregue Sob Demanda
 
@@ -38,11 +38,13 @@ Spring Kafka aplica conceitos Spring ao Kafka: `KafkaTemplate` para envio, `@Kaf
 6. Serialização usa JSON, Avro, String, bytes ou converter customizado?
 7. Está usando Spring Boot auto-config ou configuração manual?
 8. O teste precisa de embedded Kafka?
+9. Retry deve ser blocking no container ou non-blocking com `@RetryableTopic`?
 
 ## Regras Práticas
 
 - Use `KafkaTemplate` para produzir; encapsule decisão de tópico/chave/headers.
 - Use `@KafkaListener` para handlers claros, mas entenda o container por baixo.
+- Use `@RetryableTopic` para retries não bloqueantes com tópicos intermediários e DLT.
 - Commits manuais dão controle, mas exigem disciplina.
 - Retries sem DLT podem travar consumo.
 - DLT sem observabilidade vira cemitério silencioso.
