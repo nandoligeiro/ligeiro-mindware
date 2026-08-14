@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ports and Adapters"
+  short_description: "Arquitetura hexagonal prática"
+  default_prompt: "Use esta skill para projetar ou revisar uma aplicação com Ports and Adapters / Arquitetura Hexagonal."
