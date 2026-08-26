@@ -92,7 +92,31 @@ Comprima somente a pasta de uma skill, mantendo o diretório contendo o `SKILL.m
 Copy-Item -Recurse -Force .\skills\<slug> ".claude\skills\<slug>"
 ```
 
-O manifesto e o fluxo de empacotamento APM serão adicionados depois de validarmos a separação entre fonte de autoria e artefato distribuível; isso evita manter duas cópias divergentes das mesmas skills.
+## Empacotamento com APM
+
+O `apm.yml` usa `skills/` como fonte única de autoria; não existe uma cópia paralela em `.apm/`. O pacote expõe apenas skills e declara alvos para Claude Code, Codex e o diretório genérico `.agents/skills` usado por Devin Desktop/Local.
+
+```bash
+apm run validate
+apm run preview-claude
+apm run preview-codex
+apm run preview-agent-skills
+apm run pack
+```
+
+O bundle local pode ser instalado em um projeto de teste:
+
+```bash
+apm install ./dist/ligeiro-mindware-0.1.0.zip --target claude
+```
+
+Ou diretamente do repositório público:
+
+```bash
+apm install nandoligeiro/ligeiro-mindware --target claude
+apm install nandoligeiro/ligeiro-mindware --target codex
+apm install nandoligeiro/ligeiro-mindware --target agent-skills
+```
 
 ## Princípios
 
