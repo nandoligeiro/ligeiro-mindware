@@ -18,10 +18,13 @@ Cada skill pode reunir:
 - padrões e exemplos;
 - capítulos ou referências complementares.
 
+O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado em agentes compatíveis e, em uma etapa posterior, empacotado com APM.
+
 ## Estrutura
 
 ```text
 ligeiro-mindware/
+├── AGENTS.md
 ├── skills/
 │   └── <skill-name>/
 │       ├── SKILL.md
@@ -29,9 +32,12 @@ ligeiro-mindware/
 │       ├── glossary.md
 │       ├── patterns.md
 │       └── chapters/
+├── evals/
+├── docs/
 └── tools/
     ├── book-to-skill/
-    └── docs-to-skill/
+    ├── docs-to-skill/
+    └── skill-engineering/
 ```
 
 ## Fluxo para novas skills
@@ -40,31 +46,42 @@ ligeiro-mindware/
 2. Use o conversor adequado em `tools/`.
 3. Grave o resultado final em `skills/<slug>/`.
 4. Revise e valide `skills/<slug>/SKILL.md`.
-5. Faça commit apenas dos artefatos derivados permitidos, nunca dos arquivos-fonte protegidos.
+5. Crie ou atualize cenários em `evals/` quando mudar ativação, fluxo ou saída.
+6. Faça commit apenas dos artefatos derivados permitidos, nunca dos arquivos-fonte protegidos.
 
-## Instalação no Codex
+Validação estrutural:
 
-Copie a pasta da skill desejada para o diretório local de skills do Codex.
+```bash
+python3 tools/skill-engineering/validate_skills.py
+```
+
+## Instalação em agentes compatíveis
+
+Para uso direto em ferramentas que descobrem o padrão `.agents/skills`, copie a pasta da skill desejada para o catálogo do projeto ou do usuário.
 
 ### Windows — PowerShell
 
 ```powershell
-Copy-Item -Recurse -Force .\skills\<slug> "$env:USERPROFILE\.codex\skills\<slug>"
+Copy-Item -Recurse -Force .\skills\<slug> "$env:USERPROFILE\.agents\skills\<slug>"
 ```
 
 ### macOS ou Linux
 
 ```bash
-cp -R ./skills/<slug> ~/.codex/skills/<slug>
+mkdir -p ~/.agents/skills
+cp -R ./skills/<slug> ~/.agents/skills/<slug>
 ```
 
-Depois, reinicie o Codex para carregar a nova skill.
+Esse formato é compatível com o Devin Desktop/Local quando a skill está no catálogo `.agents/skills`. Para instalações legadas do Codex, `~/.codex/skills` continua sendo uma alternativa local.
+
+O manifesto e o fluxo de empacotamento APM serão adicionados depois de validarmos a separação entre fonte de autoria e artefato distribuível; isso evita manter duas cópias divergentes das mesmas skills.
 
 ## Princípios
 
 - **Conhecimento acionável:** menos arquivo morto, mais capacidade aplicável.
 - **Estrutura antes de volume:** uma skill útil vale mais do que uma pasta cheia de notas.
 - **Portabilidade:** o conteúdo não deve depender para sempre de um único agente ou plataforma.
+- **Avaliação:** ativação correta, fluxo correto e saída verificável fazem parte da qualidade.
 - **Curadoria humana:** automação acelera; julgamento continua sendo responsabilidade de quem usa.
 - **Respeito às fontes:** síntese e transformação não significam redistribuição indevida.
 
