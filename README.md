@@ -18,7 +18,7 @@ Cada skill pode reunir:
 - padrões e exemplos;
 - capítulos ou referências complementares.
 
-O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado em agentes compatíveis e, em uma etapa posterior, empacotado com APM.
+O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado diretamente em agentes compatíveis ou empacotado com APM.
 
 ## Estrutura
 
@@ -90,6 +90,32 @@ Comprima somente a pasta de uma skill, mantendo o diretório contendo o `SKILL.m
 
 ```powershell
 Copy-Item -Recurse -Force .\skills\<slug> ".claude\skills\<slug>"
+```
+
+## Empacotamento com APM
+
+O `apm.yml` usa `skills/` como fonte única de autoria; não existe uma cópia paralela em `.apm/`. O pacote expõe apenas skills e declara alvos para Claude Code, Codex e o diretório genérico `.agents/skills` usado por Devin Desktop/Local.
+
+```bash
+apm run validate
+apm run preview-claude
+apm run preview-codex
+apm run preview-agent-skills
+apm run pack
+```
+
+O bundle local pode ser instalado em um projeto de teste:
+
+```bash
+apm install ./dist/ligeiro-mindware-0.1.0.zip --target claude
+```
+
+Ou diretamente do repositório público:
+
+```bash
+apm install nandoligeiro/ligeiro-mindware --target claude
+apm install nandoligeiro/ligeiro-mindware --target codex
+apm install nandoligeiro/ligeiro-mindware --target agent-skills
 ```
 
 ## Empacotamento com APM
