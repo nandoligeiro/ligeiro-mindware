@@ -57,22 +57,40 @@ python3 tools/skill-engineering/validate_skills.py
 
 ## Instalação em agentes compatíveis
 
-Para uso direto em ferramentas que descobrem o padrão `.agents/skills`, copie a pasta da skill desejada para o catálogo do projeto ou do usuário.
+A fonte de autoria é `skills/<slug>/`. O formato `SKILL.md` segue o [Agent Skills open standard](https://agentskills.io/specification), mas cada produto possui seu próprio diretório de descoberta.
 
-### Windows — PowerShell
+| Ambiente | Onde instalar |
+|---|---|
+| Devin Desktop/Local | `.agents/skills/<slug>/` no projeto ou catálogo do usuário |
+| Claude Code | `.claude/skills/<slug>/` no projeto ou `~/.claude/skills/<slug>/` para uso pessoal |
+| Claude.ai/Cowork | ZIP de uma skill individual, enviado em **Customize > Skills > Create skill > Upload a skill** |
+| Codex legado | `~/.codex/skills/<slug>/` |
 
-```powershell
-Copy-Item -Recurse -Force .\skills\<slug> "$env:USERPROFILE\.agents\skills\<slug>"
-```
-
-### macOS ou Linux
+### Devin Desktop/Local
 
 ```bash
 mkdir -p ~/.agents/skills
 cp -R ./skills/<slug> ~/.agents/skills/<slug>
 ```
 
-Esse formato é compatível com o Devin Desktop/Local quando a skill está no catálogo `.agents/skills`. Para instalações legadas do Codex, `~/.codex/skills` continua sendo uma alternativa local.
+### Claude Code
+
+```bash
+mkdir -p .claude/skills
+cp -R ./skills/<slug> .claude/skills/<slug>
+```
+
+Para uma skill pessoal disponível em todos os projetos, use `~/.claude/skills/<slug>/`. O Claude Code também permite invocação direta com `/<skill-name>`.
+
+### Claude.ai/Cowork
+
+Comprima somente a pasta de uma skill, mantendo o diretório contendo o `SKILL.md` na raiz do ZIP. Depois faça o upload em **Customize > Skills**. Skills compartilhadas em Team/Enterprise dependem das políticas e permissões da organização.
+
+### Windows — PowerShell
+
+```powershell
+Copy-Item -Recurse -Force .\skills\<slug> ".claude\skills\<slug>"
+```
 
 O manifesto e o fluxo de empacotamento APM serão adicionados depois de validarmos a separação entre fonte de autoria e artefato distribuível; isso evita manter duas cópias divergentes das mesmas skills.
 
