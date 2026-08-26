@@ -18,10 +18,13 @@ Cada skill pode reunir:
 - padrões e exemplos;
 - capítulos ou referências complementares.
 
+O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado em agentes compatíveis e, em uma etapa posterior, empacotado com APM.
+
 ## Estrutura
 
 ```text
 ligeiro-mindware/
+├── AGENTS.md
 ├── skills/
 │   └── <skill-name>/
 │       ├── SKILL.md
@@ -29,9 +32,12 @@ ligeiro-mindware/
 │       ├── glossary.md
 │       ├── patterns.md
 │       └── chapters/
+├── evals/
+├── docs/
 └── tools/
     ├── book-to-skill/
-    └── docs-to-skill/
+    ├── docs-to-skill/
+    └── skill-engineering/
 ```
 
 ## Fluxo para novas skills
@@ -40,31 +46,60 @@ ligeiro-mindware/
 2. Use o conversor adequado em `tools/`.
 3. Grave o resultado final em `skills/<slug>/`.
 4. Revise e valide `skills/<slug>/SKILL.md`.
-5. Faça commit apenas dos artefatos derivados permitidos, nunca dos arquivos-fonte protegidos.
+5. Crie ou atualize cenários em `evals/` quando mudar ativação, fluxo ou saída.
+6. Faça commit apenas dos artefatos derivados permitidos, nunca dos arquivos-fonte protegidos.
 
-## Instalação no Codex
+Validação estrutural:
 
-Copie a pasta da skill desejada para o diretório local de skills do Codex.
+```bash
+python3 tools/skill-engineering/validate_skills.py
+```
+
+## Instalação em agentes compatíveis
+
+A fonte de autoria é `skills/<slug>/`. O formato `SKILL.md` segue o [Agent Skills open standard](https://agentskills.io/specification), mas cada produto possui seu próprio diretório de descoberta.
+
+| Ambiente | Onde instalar |
+|---|---|
+| Devin Desktop/Local | `.agents/skills/<slug>/` no projeto ou catálogo do usuário |
+| Claude Code | `.claude/skills/<slug>/` no projeto ou `~/.claude/skills/<slug>/` para uso pessoal |
+| Claude.ai/Cowork | ZIP de uma skill individual, enviado em **Customize > Skills > Create skill > Upload a skill** |
+| Codex legado | `~/.codex/skills/<slug>/` |
+
+### Devin Desktop/Local
+
+```bash
+mkdir -p ~/.agents/skills
+cp -R ./skills/<slug> ~/.agents/skills/<slug>
+```
+
+### Claude Code
+
+```bash
+mkdir -p .claude/skills
+cp -R ./skills/<slug> .claude/skills/<slug>
+```
+
+Para uma skill pessoal disponível em todos os projetos, use `~/.claude/skills/<slug>/`. O Claude Code também permite invocação direta com `/<skill-name>`.
+
+### Claude.ai/Cowork
+
+Comprima somente a pasta de uma skill, mantendo o diretório contendo o `SKILL.md` na raiz do ZIP. Depois faça o upload em **Customize > Skills**. Skills compartilhadas em Team/Enterprise dependem das políticas e permissões da organização.
 
 ### Windows — PowerShell
 
 ```powershell
-Copy-Item -Recurse -Force .\skills\<slug> "$env:USERPROFILE\.codex\skills\<slug>"
+Copy-Item -Recurse -Force .\skills\<slug> ".claude\skills\<slug>"
 ```
 
-### macOS ou Linux
-
-```bash
-cp -R ./skills/<slug> ~/.codex/skills/<slug>
-```
-
-Depois, reinicie o Codex para carregar a nova skill.
+O manifesto e o fluxo de empacotamento APM serão adicionados depois de validarmos a separação entre fonte de autoria e artefato distribuível; isso evita manter duas cópias divergentes das mesmas skills.
 
 ## Princípios
 
 - **Conhecimento acionável:** menos arquivo morto, mais capacidade aplicável.
 - **Estrutura antes de volume:** uma skill útil vale mais do que uma pasta cheia de notas.
 - **Portabilidade:** o conteúdo não deve depender para sempre de um único agente ou plataforma.
+- **Avaliação:** ativação correta, fluxo correto e saída verificável fazem parte da qualidade.
 - **Curadoria humana:** automação acelera; julgamento continua sendo responsabilidade de quem usa.
 - **Respeito às fontes:** síntese e transformação não significam redistribuição indevida.
 
