@@ -15,7 +15,4 @@ includes:
 
 scripts:
   validate: python3 tools/skill-engineering/validate_skills.py --strict
-  preview-claude: apm compile --dry-run --target claude
-  preview-codex: apm compile --dry-run --target codex
-  preview-agent-skills: apm compile --dry-run --target agent-skills
   pack: apm pack --archive -o ./dist
