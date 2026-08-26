@@ -44,6 +44,13 @@ ligeiro-mindware/
 6. Empacotar ou instalar sem duplicar fontes de verdade.
 7. Refinar a partir de traços reais e preservar regressões.
 
-## Devin Desktop/Local
+## Compatibilidade entre agentes
 
-A compatibilidade prática é obtida mantendo o formato portátil e instalando a skill no catálogo `.agents/skills` do projeto ou do usuário. A configuração específica do agente deve permanecer opcional. O mesmo catálogo pode ser consumido no ambiente pessoal e, em uma etapa posterior, no ambiente corporativo autorizado.
+A fonte de autoria fica em `skills/<slug>/` e cada distribuição adapta apenas o caminho de descoberta:
+
+- **Devin Desktop/Local**: catálogo `.agents/skills`.
+- **Claude Code**: `.claude/skills` no projeto ou `~/.claude/skills` no usuário.
+- **Claude.ai/Cowork**: ZIP de uma skill individual enviado pela área de Skills; em Team/Enterprise, compartilhamento depende da governança da organização.
+- **Codex e outros agentes compatíveis**: diretório de skills suportado pelo produto.
+
+O conteúdo continua sendo o mesmo `SKILL.md`. Recursos específicos do agente devem ser opcionais, porque recursos exclusivos do Claude Code — como injeção dinâmica, hooks ou execução em subagente — não são portáveis para Claude.ai, Devin ou outros runtimes.
