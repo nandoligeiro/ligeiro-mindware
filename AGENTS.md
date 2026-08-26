@@ -25,7 +25,7 @@ Este repositório transforma conhecimento técnico em Agent Skills reutilizávei
 
 ## Portabilidade
 
-O contrato principal é o padrão `SKILL.md`. A mesma skill pode ser consumida diretamente por ferramentas que descobrem `.agents/skills` e, futuramente, empacotada com APM. Arquivos específicos de um provedor são opcionais e não devem substituir o conteúdo portátil da skill.
+O contrato principal é o padrão `SKILL.md`. A fonte fica em `skills/`; o `apm.yml` define como distribuí-la para os alvos suportados. Devin/Codex usam o catálogo convergente `.agents/skills`, enquanto Claude Code usa `.claude/skills`. Arquivos específicos de um provedor são opcionais e não devem substituir o conteúdo portátil da skill.
 
 ## Critério de pronto
 

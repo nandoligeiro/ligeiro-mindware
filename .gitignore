@@ -18,6 +18,8 @@ metadata.json
 # Agent package/runtime artifacts
 apm_modules/
 .skill-eval-runs/
+build/
+dist/
 
 # OS/editor
 .DS_Store

@@ -18,7 +18,7 @@ Cada skill pode reunir:
 - padrões e exemplos;
 - capítulos ou referências complementares.
 
-O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado em agentes compatíveis e, em uma etapa posterior, empacotado com APM.
+O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado diretamente em agentes compatíveis ou empacotado com APM.
 
 ## Estrutura
 
@@ -92,7 +92,38 @@ Comprima somente a pasta de uma skill, mantendo o diretório contendo o `SKILL.m
 Copy-Item -Recurse -Force .\skills\<slug> ".claude\skills\<slug>"
 ```
 
-O manifesto e o fluxo de empacotamento APM serão adicionados depois de validarmos a separação entre fonte de autoria e artefato distribuível; isso evita manter duas cópias divergentes das mesmas skills.
+## Empacotamento com APM
+
+O `apm.yml` usa `skills/` como fonte única de autoria; não existe uma cópia paralela em `.apm/`. O pacote expõe apenas skills e declara alvos para Claude Code, Codex e o diretório genérico `.agents/skills` usado por Devin Desktop/Local.
+
+O APM `compile` é voltado para primitives de instrução e contexto. Como este pacote é composto por skills, o fluxo é:
+
+```bash
+apm run validate
+apm run pack
+```
+
+Para visualizar a instalação por alvo, use o bundle gerado em um projeto de teste:
+
+```bash
+apm install ./dist/ligeiro-mindware-0.1.0.zip --dry-run --target claude
+apm install ./dist/ligeiro-mindware-0.1.0.zip --dry-run --target codex
+apm install ./dist/ligeiro-mindware-0.1.0.zip --dry-run --target agent-skills
+```
+
+Instalação real do bundle:
+
+```bash
+apm install ./dist/ligeiro-mindware-0.1.0.zip --target claude
+```
+
+Ou diretamente do repositório público:
+
+```bash
+apm install nandoligeiro/ligeiro-mindware --target claude
+apm install nandoligeiro/ligeiro-mindware --target codex
+apm install nandoligeiro/ligeiro-mindware --target agent-skills
+```
 
 ## Princípios
 

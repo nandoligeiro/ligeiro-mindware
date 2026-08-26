@@ -1,0 +1,18 @@
+name: ligeiro-mindware
+version: 0.1.0
+description: Portable Agent Skills for backend engineering, architecture and cloud-native systems.
+author: nandoligeiro
+license: MIT
+targets: [claude, codex, agent-skills]
+type: skill
+
+dependencies:
+  apm: []
+  mcp: []
+
+includes:
+  - skills/
+
+scripts:
+  validate: python3 tools/skill-engineering/validate_skills.py --strict
+  pack: apm pack --archive -o ./dist
