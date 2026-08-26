@@ -15,6 +15,10 @@ metadata.json
 *.tmp
 *.log
 
+# Agent package/runtime artifacts
+apm_modules/
+.skill-eval-runs/
+
 # OS/editor
 .DS_Store
 Thumbs.db
