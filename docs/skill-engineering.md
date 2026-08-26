@@ -12,7 +12,7 @@ evidência -> WSA/Skill-IR -> SKILL.md -> evals -> pacote ou instalação
 - **WSA/Skill-IR**: modelo de projeto interno para tornar explícitos roteamento, workflow, semântica, anexos e proveniência.
 - **`SKILL.md`**: contrato portátil consumido por agentes compatíveis com Agent Skills.
 - **`evals/`**: cenários que verificam ativação, execução, saída e não ativação.
-- **Pacote ou instalação**: distribuição direta em `.agents/skills` ou empacotamento com APM.
+- **Pacote ou instalação**: distribuição direta em `.agents/skills`, `.claude/skills` ou empacotamento determinístico com `apm.yml`.
 
 WSA/Skill-IR é uma disciplina de autoria e avaliação; não é um requisito adicional do runtime. O runtime deve continuar enxergando um `SKILL.md` simples.
 
