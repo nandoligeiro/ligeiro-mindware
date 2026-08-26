@@ -28,16 +28,27 @@ def parse_frontmatter(path: Path) -> tuple[dict[str, str], list[str]]:
     values: dict[str, str] = {}
     errors: list[str] = []
     current_key: str | None = None
+    block_description_markers = {">", "|", ">-", "|-", ">+", "|+"}
     for raw_line in lines[1:end]:
         if not raw_line.strip() or raw_line.lstrip().startswith("#"):
             continue
-        match = re.match(r"^([A-Za-z0-9_-]+):(?:[ \t]+(.*))?$", raw_line)
+        match = re.match(r"^([A-Za-z0-9_-]+):(?:[ 	]+(.*))?$", raw_line)
         if match:
             current_key = match.group(1)
             values[current_key] = (match.group(2) or "").strip().strip("\"'")
             continue
-        if current_key in {"description"} and raw_line.startswith((" ", "\t")):
-            values[current_key] = (values[current_key] + " " + raw_line.strip()).strip()
+        if raw_line.startswith((" ", "	")) and current_key is not None:
+            if current_key == "description":
+                line = raw_line.strip()
+                if values[current_key] in block_description_markers:
+                    values[current_key] = line
+                else:
+                    values[current_key] = (values[current_key] + " " + line).strip()
+            # Indented lines can be nested YAML fields, for example:
+            # metadata:
+            #   short-description: ...
+            # They are valid frontmatter and are not fields the validator
+            # needs to inspect.
             continue
         errors.append(f"linha de frontmatter inválida: {raw_line}")
     return values, errors
