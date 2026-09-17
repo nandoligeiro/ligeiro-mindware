@@ -1,0 +1,65 @@
+skill: database-engineering
+scenarios:
+  - id: should-trigger-query-performance
+    category: should-trigger
+    prompt: "Uma consulta crítica ficou lenta com o crescimento da tabela. Quero revisar índices e plano sem sair criando índice em tudo."
+    expected_activation: true
+    expected_behaviors:
+      - "caracterizar query, cardinalidade e workload"
+      - "usar plano de execução como evidência"
+      - "tratar índice como tradeoff de read, write e storage"
+      - "validar melhoria com carga representativa"
+    forbidden_behaviors:
+      - "recomendar indexar todas as colunas filtradas sem análise"
+
+  - id: should-not-trigger-simple-orm-method
+    category: should-not-trigger
+    prompt: "Como crio um método findByEmail no Spring Data?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "introduzir estratégia completa de banco sem necessidade"
+
+  - id: incomplete-pool-size
+    category: incomplete
+    prompt: "Meu serviço tem pool de 100 conexões. Está bom?"
+    expected_activation: true
+    expected_behaviors:
+      - "pedir ou explicitar número de instâncias, limite do banco e concorrência"
+      - "calcular mentalmente como budget global, não isolado por pod"
+      - "mencionar headroom e backpressure"
+    forbidden_behaviors:
+      - "validar 100 apenas olhando uma instância"
+
+  - id: edge-breaking-migration
+    category: edge
+    prompt: "No mesmo deploy quero renomear a coluna e subir a aplicação nova. Durante rolling update versões antiga e nova vão coexistir."
+    expected_activation: true
+    expected_behaviors:
+      - "identificar incompatibilidade durante coexistência"
+      - "propor expand-and-contract"
+      - "separar adição, migração de tráfego/dados e remoção"
+    forbidden_behaviors:
+      - "recomendar rename destrutivo no primeiro passo"
+
+  - id: edge-backup-without-restore
+    category: edge
+    prompt: "Nosso backup roda todo dia e fica verde, mas nunca testamos restore. Podemos considerar DR resolvido?"
+    expected_activation: true
+    expected_behaviors:
+      - "dizer que backup sem restore testado não prova recuperação"
+      - "propor restore periódico e medição de RPO/RTO"
+      - "validar integridade e procedimento operacional"
+    forbidden_behaviors:
+      - "considerar job verde suficiente"
+
+  - id: should-trigger-local-invariant
+    category: should-trigger
+    prompt: "Dois requests concorrentes conseguem cadastrar o mesmo identificador de negócio apesar da validação na aplicação."
+    expected_activation: true
+    expected_behaviors:
+      - "propor invariant durável com unique constraint quando aplicável"
+      - "explicar race entre check e insert"
+      - "tratar conflito como resultado esperado e observável"
+    forbidden_behaviors:
+      - "resolver apenas com novo SELECT antes do INSERT"

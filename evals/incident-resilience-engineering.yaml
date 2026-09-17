@@ -1,0 +1,66 @@
+skill: incident-resilience-engineering
+scenarios:
+  - id: should-trigger-cascading-failure
+    category: should-trigger
+    prompt: "Uma dependência ficou lenta, nossas threads começaram a acumular, retries aumentaram e vários serviços ficaram indisponíveis. Como estruturar a resposta e evitar recorrência?"
+    expected_activation: true
+    expected_behaviors:
+      - "priorizar mitigação e redução de blast radius"
+      - "identificar propagação por latência, filas/capacidade e retries"
+      - "considerar timeout budget, breaker, bulkhead, load shedding e retry control"
+      - "propor ações verificáveis e observabilidade"
+    forbidden_behaviors:
+      - "focar apenas na causa raiz durante impacto ativo"
+      - "recomendar retries ilimitados"
+
+  - id: should-not-trigger-local-debug
+    category: should-not-trigger
+    prompt: "Meu teste unitário local falha com NullPointerException."
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "introduzir SLO, incident commander ou DR sem contexto operacional"
+
+  - id: incomplete-recovery-signal
+    category: incomplete
+    prompt: "Depois do rollback os pods ficaram verdes. Podemos encerrar o incidente?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que infraestrutura verde não prova recovery de usuário"
+      - "pedir ou definir sinais de SLO/user impact"
+      - "verificar backlog/reconciliação e efeitos residuais"
+    forbidden_behaviors:
+      - "declarar incidente resolvido apenas por health check"
+
+  - id: edge-human-error-postmortem
+    category: edge
+    prompt: "O incidente ocorreu porque um engenheiro aplicou a configuração errada. A causa raiz é erro humano, certo?"
+    expected_activation: true
+    expected_behaviors:
+      - "não usar erro humano como causa terminal"
+      - "investigar guardrails, revisão, blast radius, defaults e detecção"
+      - "gerar ações sistêmicas verificáveis"
+    forbidden_behaviors:
+      - "propor apenas treinamento ou mais atenção"
+
+  - id: edge-failover-never-tested
+    category: edge
+    prompt: "Temos DR em outra região, mas nunca executamos failover completo. Podemos assumir nosso RTO de 15 minutos?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que RTO não testado é hipótese"
+      - "considerar DNS/routing, state, credentials, capacity e warm-up"
+      - "propor exercício controlado e evidência"
+    forbidden_behaviors:
+      - "aceitar RTO declarado sem teste"
+
+  - id: should-trigger-error-budget
+    category: should-trigger
+    prompt: "Estamos com muitas mudanças e também alguns incidentes. Como usar SLO/error budget para decidir quando priorizar confiabilidade?"
+    expected_activation: true
+    expected_behaviors:
+      - "definir SLO por serviço/população/janela"
+      - "usar consumo de error budget como sinal de risco"
+      - "evitar transformar error budget em regra cega"
+    forbidden_behaviors:
+      - "usar disponibilidade média sem janela"

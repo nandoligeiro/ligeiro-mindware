@@ -4,39 +4,47 @@ Este documento organiza o catálogo de skills pela capacidade que um engenheiro 
 
 ## Princípio
 
-O catálogo deve evoluir de uma coleção forte em Java/Spring para um conjunto equilibrado de capacidades de engenharia: domínio, sistemas distribuídos, qualidade, segurança, entrega, plataforma, dados, operação e engenharia assistida por IA.
+O catálogo evoluiu de uma coleção forte em Java/Spring para um conjunto mais equilibrado de capacidades de engenharia: domínio, sistemas distribuídos, qualidade, segurança, entrega, plataforma, dados, operação e engenharia assistida por IA.
+
+A primeira expansão planejada do catálogo foi concluída em três ondas:
+
+- P0 — fundação obrigatória;
+- P1 — capacidade de entrega;
+- P2 — profundidade operacional.
+
+O foco agora deixa de ser expansão automática e passa a ser hardening, uso real, regressões observadas e evolução de maturidade.
 
 ## Cobertura atual
 
-| Capability | Estado | Skills relacionadas |
-|---|---|---|
-| Java/JVM moderno | forte | `optimizing-cloud-native-java` |
-| Spring ecosystem | forte | `spring-framework`, `spring-data`, `spring-data-redis`, `spring-kafka`, `spring-security` |
-| Domain-driven design | forte | `learning-domain-driven-design` |
-| Ports & Adapters | forte | `ports-and-adapters` |
-| Event streaming | forte | `kafka-definitive-guide`, `spring-kafka` |
-| Observability / SRE fundamentals | forte | `observability-engineering` |
-| Application security | parcial | `spring-security` |
-| Distributed systems | parcial | tópicos dispersos em Kafka, DDD e Java |
-| Testing / quality engineering | parcial | tópicos dispersos nas skills existentes |
-| API / contract engineering | parcial | sem skill dedicada |
-| Cloud / platform engineering | parcial | cobertura indireta em cloud-native Java |
-| CI/CD / release engineering | lacuna | sem skill dedicada |
-| Software supply chain | lacuna | sem skill dedicada |
-| AI-assisted engineering | lacuna | meta-skills existem, mas não há skill operacional do ciclo de engenharia com agentes |
-| Database engineering | lacuna | Spring Data não substitui fundamentos de banco |
-| Networking | lacuna | sem skill dedicada |
-| Incident / resilience engineering | lacuna | observabilidade cobre diagnóstico, mas não o ciclo completo de incidentes e resiliência |
+| Capability | Estado | Maturidade / observação | Skills relacionadas |
+|---|---|---|---|
+| Java/JVM moderno | forte | cobertura madura de performance e operação cloud native | `optimizing-cloud-native-java` |
+| Spring ecosystem | forte | cobertura ampla do framework e integrações principais | `spring-framework`, `spring-data`, `spring-data-redis`, `spring-kafka`, `spring-security` |
+| Domain-driven design | forte | fundamentos e heurísticas explícitas | `learning-domain-driven-design` |
+| Ports & Adapters | forte | fronteiras, adapters e dependências explícitas | `ports-and-adapters` |
+| Event streaming | forte | Kafka e integração Spring cobertos | `kafka-definitive-guide`, `spring-kafka` |
+| Observability / SRE fundamentals | forte | sinais, instrumentação e diagnóstico cobertos | `observability-engineering` |
+| Application security | forte | L3 — regression protected | `secure-software-engineering`, `spring-security` |
+| Software supply chain | forte | L3 — SBOM, provenance, signing e verification | `secure-software-engineering` |
+| Distributed systems | forte | L3 — failure modes, idempotência, ownership, recovery e backpressure | `distributed-systems-engineering` |
+| Testing / quality engineering | forte | L3 — estratégia orientada a risco e feedback | `software-testing-engineering` |
+| API / contract engineering | forte | L3 — semântica, compatibilidade, lifecycle e contract tests | `api-contract-engineering` |
+| Cloud / platform engineering | forte | L3 — platform as product, self-service e guardrails | `platform-engineering`, `optimizing-cloud-native-java` |
+| CI/CD / release engineering | forte | L3 — artifact promotion, progressive delivery e change safety | `software-delivery-engineering` |
+| AI-assisted engineering | forte | L3 — harness, context, tools, permissions, evals e verification | `ai-assisted-software-engineering` |
+| Database engineering | forte | L3 — modelagem, índices, concorrência, migrations e recovery | `database-engineering` |
+| Networking | forte | L3 — diagnóstico por estágio, timeouts, TLS, proxies e connection lifecycle | `networking-for-software-engineers` |
+| Incident / resilience engineering | forte | L3 — detect, stabilize, recover, explain e learn | `incident-resilience-engineering`, `observability-engineering` |
 
-## Próximas skills
+## Estado da primeira expansão
 
-### P0 — fundação obrigatória
+### P0 — fundação obrigatória — concluído
 
 1. `distributed-systems-engineering`
    - partial failures, timeouts, retries e backoff;
    - idempotency, dedupe, claim, lease e fencing;
    - ordering, consistency, availability e partitions;
-   - sagas, outbox/inbox, distributed transactions;
+   - sagas, outbox/inbox e recovery;
    - backpressure, load shedding e concurrency control;
    - failure modes e trade-offs verificáveis.
 
@@ -50,7 +58,7 @@ O catálogo deve evoluir de uma coleção forte em Java/Spring para um conjunto 
 
 3. `secure-software-engineering`
    - threat modeling e secure-by-design;
-   - OWASP ASVS como requisitos verificáveis;
+   - requisitos verificáveis;
    - secrets, authn/authz, crypto e data protection;
    - dependency security e vulnerability management;
    - SBOM, provenance, signing e software supply chain;
@@ -62,56 +70,95 @@ O catálogo deve evoluir de uma coleção forte em Java/Spring para um conjunto 
    - MCP e integração com ferramentas;
    - harness engineering;
    - evals, verification e regression loops;
-   - guardrails, permissions, sandboxing e human-in-the-loop;
-   - observabilidade e custo de agentes.
+   - permissions, sandboxing e human-in-the-loop;
+   - observabilidade, custo e bounded agent loops.
 
-### P1 — capacidade de entrega
+### P1 — capacidade de entrega — concluído
 
 5. `api-contract-engineering`
-   - REST, OpenAPI e AsyncAPI;
+   - contratos síncronos e assíncronos;
    - backward compatibility e schema evolution;
    - consumer-driven contracts;
-   - versioning e deprecation;
-   - idempotency e error contracts.
+   - versioning, deprecation e telemetry de adoção;
+   - semântica, ownership e error contracts.
 
 6. `platform-engineering`
+   - platform as product;
    - golden paths e paved roads;
-   - internal developer platforms;
-   - Kubernetes, GitOps e policy-as-code;
-   - scaffolding e developer experience;
-   - self-service com guardrails.
+   - self-service real;
+   - policy-as-code e guardrails;
+   - scaffolding, developer experience e escape hatches.
 
 7. `software-delivery-engineering`
-   - CI/CD;
-   - trunk-based development;
-   - artifact immutability e promotion;
+   - CI/CD e integração frequente;
+   - build once e promoção do mesmo artefato imutável;
    - progressive delivery, canary e feature flags;
    - rollback, roll-forward e change safety;
-   - DORA metrics e feedback loops.
+   - configuração por ambiente sem rebuild.
 
 8. `database-engineering`
-   - modeling e access patterns;
+   - modelagem orientada a invariantes e access patterns;
    - indexes e query plans;
-   - transactions, MVCC e isolation;
-   - locking e contention;
-   - partitioning, replication e migrations;
-   - relational vs document vs key-value trade-offs.
+   - transactions, isolation e optimistic concurrency;
+   - expand-and-contract migrations;
+   - connection pool como budget global;
+   - backup, restore e recovery testados.
 
-### P2 — profundidade operacional
+### P2 — profundidade operacional — concluído
 
 9. `networking-for-software-engineers`
-   - TCP, HTTP/2, HTTP/3 e connection lifecycle;
+   - diagnóstico `DNS -> route -> connect -> TLS -> protocol -> application`;
+   - connection lifecycle e timeout budgets;
    - DNS, TLS/mTLS e certificates;
-   - proxies, gateways, NAT e load balancing;
-   - keep-alive, pools e timeout budgets.
+   - proxies, gateways, NAT, load balancing e service mesh;
+   - keep-alive, pools e portas efêmeras.
 
 10. `incident-resilience-engineering`
-    - incident command e triage;
-    - RCA e blameless postmortem;
-    - resilience patterns;
-    - graceful degradation e load shedding;
-    - game days e failure drills;
-    - follow-up verificável.
+    - detect, stabilize, recover, explain e learn;
+    - SLO, error budget e symptom-based detection;
+    - circuit breaker, bulkhead, load shedding e graceful degradation;
+    - failover/DR com RTO/RPO testados;
+    - postmortem e follow-up verificável.
+
+## Maturidade atual
+
+A cobertura das capabilities planejadas agora é forte, mas cobertura não é sinônimo de aprendizado de produção.
+
+As novas capabilities P0, P1 e P2 têm alvo e proteção L3 — regression protected:
+
+- ativação e não ativação explícitas;
+- workflow e heurísticas verificáveis;
+- cenários positive, negative, incomplete e edge;
+- regressões preservadas por `validate_evals.py`;
+- comportamento vendor-neutral quando possível.
+
+O próximo alvo é L4 — production learned:
+
+```text
+real task
+  -> trace / evidence
+  -> failure or friction
+  -> regression scenario
+  -> skill refinement
+  -> re-evaluation
+  -> learned experience
+```
+
+Uma capability só deve ser considerada L4 quando tiver sido refinada por uso real recorrente, incluindo falhas observadas e trade-offs comprovados.
+
+## Próximo ciclo — hardening, não P3 automático
+
+Não existe um P3 pré-definido.
+
+O próximo ciclo deve priorizar:
+
+1. levar skills existentes de L1/L2 para L3;
+2. usar as capabilities P0/P1/P2 em tarefas reais;
+3. transformar failures, misses e ambiguidades em evals de regressão;
+4. medir sobreposição e conflitos de ativação entre skills;
+5. remover duplicação e dependência implícita de contexto;
+6. promover para L4 apenas capacidades sustentadas por evidência de produção;
+7. criar novas skills somente quando gaps reais aparecerem no uso.
 
 ## Regra de priorização
 
@@ -119,9 +166,10 @@ Uma nova skill deve entrar no catálogo quando satisfizer pelo menos um destes c
 
 - reduz risco recorrente de produção;
 - melhora decisão arquitetural em mais de um stack/projeto;
-- cobre capacidade transversal hoje ausente;
+- cobre capacidade transversal realmente ausente;
 - transforma conhecimento em procedimento verificável;
-- elimina dependência excessiva de uma tecnologia específica.
+- elimina dependência excessiva de uma tecnologia específica;
+- existe evidência de tarefas reais mal atendidas pelas skills atuais.
 
 Evite criar skills que apenas fragmentem documentação de frameworks já cobertos.
 
@@ -140,3 +188,5 @@ intent
 ```
 
 O catálogo deve ajudar humanos e agentes a percorrer esse ciclo com critérios explícitos, evidência e trade-offs claros.
+
+A direção agora é sair de `coverage forte + L3` para `uso real + regressões reais + L4`.

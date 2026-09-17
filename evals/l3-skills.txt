@@ -1,5 +1,11 @@
 # Skills protegidas pelo gate L3 de evals
 ai-assisted-software-engineering
+api-contract-engineering
+database-engineering
 distributed-systems-engineering
+incident-resilience-engineering
+networking-for-software-engineers
+platform-engineering
 secure-software-engineering
+software-delivery-engineering
 software-testing-engineering
