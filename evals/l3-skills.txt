@@ -1,0 +1,5 @@
+# Skills protegidas pelo gate L3 de evals
+ai-assisted-software-engineering
+distributed-systems-engineering
+secure-software-engineering
+software-testing-engineering

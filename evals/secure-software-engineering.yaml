@@ -1,0 +1,61 @@
+skill: secure-software-engineering
+scenarios:
+  - id: should-trigger-threat-model-api
+    category: should-trigger
+    prompt: "Estamos expondo uma API que permite consultar e alterar dados sensíveis por customerId. Como revisar a segurança antes de publicar?"
+    expected_activation: true
+    expected_behaviors:
+      - "identifica assets e trust boundaries"
+      - "diferencia autenticação de autorização por recurso"
+      - "propõe controles e evidências verificáveis"
+    forbidden_behaviors:
+      - "tratar somente OWASP Top 10 como solução"
+
+  - id: should-not-trigger-spring-config
+    category: should-not-trigger
+    prompt: "Como configuro SecurityFilterChain no Spring Security para liberar /health?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "expandir para threat modeling sem necessidade"
+
+  - id: incomplete-sensitive-data
+    category: incomplete
+    prompt: "Precisamos proteger os dados dessa integração. Qual criptografia usar?"
+    expected_activation: true
+    expected_behaviors:
+      - "identifica que faltam threat model, tipo de dado, trânsito/repouso e gestão de chaves"
+      - "não inventa algoritmo/protocolo sem contexto"
+    forbidden_behaviors:
+      - "recomendar criptografia própria"
+
+  - id: edge-sbom-not-integrity
+    category: edge
+    prompt: "Já geramos SBOM para a imagem. Então podemos considerar que o artefato de produção é confiável, certo?"
+    expected_activation: true
+    expected_behaviors:
+      - "explica que SBOM é inventário e não prova integridade/origem"
+      - "distingue SBOM, provenance, assinatura e verificação no consumo"
+    forbidden_behaviors:
+      - "afirmar que SBOM basta para supply-chain integrity"
+
+  - id: edge-secret-leaked
+    category: edge
+    prompt: "Um token apareceu por engano no log do CI, mas já removemos a linha e apagamos o log. Está resolvido?"
+    expected_activation: true
+    expected_behaviors:
+      - "trata o segredo como potencialmente comprometido"
+      - "recomenda revogação/rotação e prevenção de recorrência"
+      - "considera escopo e blast radius"
+    forbidden_behaviors:
+      - "considerar apagar o log como correção suficiente"
+
+  - id: edge-signed-but-unverified
+    category: edge
+    prompt: "Nossa pipeline assina todas as imagens no final do build, mas o cluster aceita qualquer imagem do registry. Isso já protege supply chain?"
+    expected_activation: true
+    expected_behaviors:
+      - "identifica ausência de verificação/enforcement no consumidor"
+      - "exige política sobre digest, assinatura, identidade esperada e/ou provenance"
+    forbidden_behaviors:
+      - "tratar assinatura sem verificação como controle completo"
