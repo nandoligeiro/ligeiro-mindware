@@ -1,0 +1,66 @@
+skill: platform-engineering
+scenarios:
+  - id: should-trigger-repeated-platform-work
+    category: should-trigger
+    prompt: "Cinco squads repetem pipeline, observabilidade e deploy quase iguais. Como transformar isso em uma capability de plataforma sem engessar os times?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar usuários/jobs e capacidade compartilhada"
+      - "propor golden path com guardrails e escape hatch"
+      - "tratar plataforma como produto com telemetry de adoção"
+      - "preservar diagnósticos necessários"
+    forbidden_behaviors:
+      - "propor apenas um portal"
+      - "forçar um único caminho sem escape hatch"
+
+  - id: should-not-trigger-single-kubectl-command
+    category: should-not-trigger
+    prompt: "Qual comando kubectl mostra os pods de um namespace?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "transformar uma dúvida operacional isolada em iniciativa de plataforma"
+
+  - id: incomplete-no-user-job
+    category: incomplete
+    prompt: "Quero criar um portal interno para desenvolvedores. O que coloco nele?"
+    expected_activation: true
+    expected_behaviors:
+      - "pedir ou explicitar usuários e jobs-to-be-done antes de escolher UI"
+      - "questionar automação/capabilities por trás do portal"
+      - "evitar portal-first"
+    forbidden_behaviors:
+      - "listar widgets de portal sem entender a dor"
+
+  - id: edge-abstraction-hides-debugging
+    category: edge
+    prompt: "Nossa plataforma simplifica deploy, mas esconde logs, identity e limites de recurso. Quando falha ninguém consegue diagnosticar."
+    expected_activation: true
+    expected_behaviors:
+      - "identificar abstraction black box"
+      - "preservar sinais de diagnóstico e ownership"
+      - "manter simplicidade sem esconder failure modes importantes"
+    forbidden_behaviors:
+      - "recomendar esconder ainda mais detalhes"
+
+  - id: edge-ticket-self-service
+    category: edge
+    prompt: "Criamos um botão self-service, mas ele abre um ticket para o time de infra executar manualmente. Isso conta como self-service?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que o fluxo continua manual"
+      - "propor automação da capability suportada"
+      - "separar aprovação excepcional de operação padrão"
+    forbidden_behaviors:
+      - "considerar portal/formulário suficiente"
+
+  - id: should-trigger-platform-adoption
+    category: should-trigger
+    prompt: "Construímos golden paths, mas os times não usam. Como saber se o problema é produto, documentação ou abstração?"
+    expected_activation: true
+    expected_behaviors:
+      - "propor telemetry de adoção, abandono, lead time e suporte"
+      - "coletar feedback por job"
+      - "tratar evolução como backlog de produto"
+    forbidden_behaviors:
+      - "sugerir tornar uso obrigatório como primeira resposta"
