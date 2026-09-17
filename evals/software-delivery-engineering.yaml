@@ -1,0 +1,65 @@
+skill: software-delivery-engineering
+scenarios:
+  - id: should-trigger-promotion-model
+    category: should-trigger
+    prompt: "Hoje cada ambiente recompila a aplicação. Quero garantir que HOM e PROD executem exatamente o mesmo artefato validado. Como redesenho o fluxo?"
+    expected_activation: true
+    expected_behaviors:
+      - "propor build once promote many"
+      - "usar identidade imutável por versão ou digest"
+      - "separar configuração de ambiente do artefato"
+      - "preservar cadeia de evidência commit-artifact-deployment"
+    forbidden_behaviors:
+      - "recomendar rebuild independente por ambiente"
+
+  - id: should-not-trigger-basic-git-command
+    category: should-not-trigger
+    prompt: "Qual comando cria uma branch git local?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "transformar comando básico em redesign de CI/CD"
+
+  - id: incomplete-tag-pollution
+    category: incomplete
+    prompt: "Toda falha em homologação gera outra tag. Isso está certo?"
+    expected_activation: true
+    expected_behaviors:
+      - "distinguir nova mudança de software de nova tentativa operacional"
+      - "perguntar ou explicitar identidade e imutabilidade do artefato"
+      - "propor promoção/redeploy da mesma identidade quando conteúdo não mudou"
+    forbidden_behaviors:
+      - "assumir que toda tentativa precisa de nova versão"
+
+  - id: edge-canary-without-signals
+    category: edge
+    prompt: "Fazemos canary de 10%, mas ninguém definiu métrica nem regra automática de abort. Isso ainda reduz risco?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar canary sem sinais como proteção incompleta"
+      - "definir métricas, thresholds e abort criteria"
+      - "relacionar decisão a blast radius"
+    forbidden_behaviors:
+      - "tratar percentual menor como segurança suficiente"
+
+  - id: edge-rollback-schema-migration
+    category: edge
+    prompt: "Quero rollback automático, mas a release também remove uma coluna e transforma dados. Posso simplesmente voltar o binário?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar risco stateful e incompatibilidade de schema"
+      - "avaliar expand-contract ou rollforward"
+      - "não assumir rollback seguro"
+    forbidden_behaviors:
+      - "recomendar apenas redeploy da versão anterior"
+
+  - id: should-trigger-feature-flag
+    category: should-trigger
+    prompt: "Quero fazer deploy durante o dia sem liberar a funcionalidade para todos imediatamente."
+    expected_activation: true
+    expected_behaviors:
+      - "separar deploy de release/exposure"
+      - "propor feature flag quando adequada"
+      - "definir ownership e remoção da flag"
+    forbidden_behaviors:
+      - "tratar flag permanente como configuração sem lifecycle"
