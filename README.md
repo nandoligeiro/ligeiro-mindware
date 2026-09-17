@@ -2,13 +2,20 @@
 
 > Conhecimento que deixa de ser arquivo e passa a ser capacidade.
 
-Biblioteca pessoal de **mindware**: skills, referências e ferramentas que transformam livros, documentações e frameworks em conhecimento estruturado, reutilizável e acionável por agentes de IA.
+Biblioteca pessoal de **mindware**: skills, agents, referências e ferramentas que transformam livros, documentações e frameworks em conhecimento estruturado, reutilizável e acionável por agentes de IA.
 
 O projeto nasce integrado ao Codex, mas a ideia é maior do que uma ferramenta específica: criar uma camada pessoal de conhecimento que possa evoluir, ser combinada e aplicada em diferentes contextos.
 
 ## O que é mindware?
 
-Mindware é conhecimento empacotado para uso prático. Em vez de apenas armazenar notas, este repositório organiza conceitos, padrões, decisões e instruções em skills que um agente consegue consultar e aplicar.
+Mindware é conhecimento empacotado para uso prático. Em vez de apenas armazenar notas, este repositório organiza conceitos, padrões, decisões e instruções em skills que um agente consegue consultar e aplicar, além de papéis de orquestração que coordenam essas capacidades.
+
+```text
+Agent = responsabilidade + workflow + routing + handoff + exit criteria
+Skill = conhecimento e procedimento especializado
+Tool = capacidade externa
+Eval = evidência e proteção contra regressão
+```
 
 Cada skill pode reunir:
 
@@ -18,13 +25,29 @@ Cada skill pode reunir:
 - padrões e exemplos;
 - capítulos ou referências complementares.
 
+Cada agent fica em `agents/<agent-name>/AGENT.md` e descreve responsabilidade, ativação, fluxo, skills preferenciais, handoffs e critério de saída. Agents não substituem skills nem duplicam conteúdo especializado.
+
 O contrato portátil de cada skill é o padrão `SKILL.md`, com `name` e `description` no frontmatter. O catálogo pode ser instalado diretamente em agentes compatíveis ou empacotado com APM.
+
+## Agents de engenharia
+
+O catálogo possui quatro papéis de orquestração:
+
+- `software-engineering-agent`: conduz trabalho de ponta a ponta, do intent à entrega verificável;
+- `architecture-review-agent`: desafia boundaries, contratos, dados, failure modes e trade-offs;
+- `production-readiness-agent`: verifica operação, observabilidade, resiliência, networking, rollout e recovery;
+- `skill-maintainer-agent`: transforma falhas de uso em evals e hardening, levando skills de L3 para L4.
+
+Eles funcionam como uma camada fina sobre as skills existentes. Não existem agents específicos para Java, Spring ou Kafka porque essas capacidades já pertencem ao catálogo de skills.
 
 ## Estrutura
 
 ```text
 ligeiro-mindware/
 ├── AGENTS.md
+├── agents/
+│   └── <agent-name>/
+│       └── AGENT.md
 ├── skills/
 │   └── <skill-name>/
 │       ├── SKILL.md
@@ -53,6 +76,12 @@ Validação estrutural:
 
 ```bash
 python3 tools/skill-engineering/validate_skills.py
+```
+
+Para skills protegidas como L3:
+
+```bash
+python3 tools/skill-engineering/validate_evals.py --strict
 ```
 
 ## Instalação em agentes compatíveis
@@ -96,6 +125,8 @@ Copy-Item -Recurse -Force .\skills\<slug> ".claude\skills\<slug>"
 
 O `apm.yml` usa `skills/` como fonte única de autoria; não existe uma cópia paralela em `.apm/`. O pacote expõe apenas skills e declara alvos para Claude Code, Codex e o diretório genérico `.agents/skills` usado por Devin Desktop/Local.
 
+Os `agents/` permanecem como contratos de orquestração do repositório e não são tratados como skills APM.
+
 O APM `compile` é voltado para primitives de instrução e contexto. Como este pacote é composto por skills, o fluxo é:
 
 ```bash
@@ -129,6 +160,7 @@ apm install nandoligeiro/ligeiro-mindware --target agent-skills
 
 - **Conhecimento acionável:** menos arquivo morto, mais capacidade aplicável.
 - **Estrutura antes de volume:** uma skill útil vale mais do que uma pasta cheia de notas.
+- **Orquestração fina:** agents coordenam; skills detêm conhecimento especializado.
 - **Portabilidade:** o conteúdo não deve depender para sempre de um único agente ou plataforma.
 - **Avaliação:** ativação correta, fluxo correto e saída verificável fazem parte da qualidade.
 - **Curadoria humana:** automação acelera; julgamento continua sendo responsabilidade de quem usa.
