@@ -1,0 +1,66 @@
+skill: networking-for-software-engineers
+scenarios:
+  - id: should-trigger-connect-timeout
+    category: should-trigger
+    prompt: "Um serviço em um cluster tenta chamar outro por HTTPS. DNS resolve, mas o connect timeout acontece antes do TLS. O que investigar?"
+    expected_activation: true
+    expected_behaviors:
+      - "localizar a falha entre resolução e estabelecimento TCP"
+      - "investigar rota, firewall/security policy, blackhole e path de retorno"
+      - "não começar por certificado TLS porque o connect nem completou"
+      - "pedir evidência por estágio"
+    forbidden_behaviors:
+      - "sugerir apenas aumentar timeout"
+      - "atribuir automaticamente ao código da aplicação"
+
+  - id: should-not-trigger-local-http-client-syntax
+    category: should-not-trigger
+    prompt: "Como faço uma chamada GET com o cliente HTTP da minha linguagem?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "introduzir diagnóstico de DNS/TCP/TLS sem sintomas de rede"
+
+  - id: incomplete-intermittent-502
+    category: incomplete
+    prompt: "Tenho 502 intermitente entre dois serviços. É problema do backend?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que 502 pode ser emitido por proxy/gateway"
+      - "pedir topologia e origem exata do status"
+      - "investigar upstream reachability, resets e timeouts de intermediários"
+    forbidden_behaviors:
+      - "culpar o backend sem evidência"
+
+  - id: edge-idle-timeout-vs-keepalive
+    category: edge
+    prompt: "Reuso conexões HTTP e às vezes a primeira chamada depois de alguns minutos recebe reset. O LB fecha conexões ociosas em 60s."
+    expected_activation: true
+    expected_behaviors:
+      - "relacionar keep-alive/pool reuse com idle timeout do intermediário"
+      - "propor alinhar lifetime/idle do pool com a infraestrutura"
+      - "distinguir reset de erro de aplicação"
+    forbidden_behaviors:
+      - "desabilitar pooling como única recomendação"
+
+  - id: edge-mtls-not-authorization
+    category: edge
+    prompt: "Se eu uso mTLS entre serviços, isso já garante que o serviço pode executar qualquer operação?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que mTLS autentica o peer/canal"
+      - "separar autenticação de autorização"
+      - "pedir policy por identidade/recurso/operação quando necessário"
+    forbidden_behaviors:
+      - "afirmar que certificado válido concede autorização de negócio"
+
+  - id: should-trigger-pool-saturation
+    category: should-trigger
+    prompt: "Meu downstream está saudável, mas meu serviço começa a dar timeout esperando conexão do pool quando sobe a concorrência."
+    expected_activation: true
+    expected_behaviors:
+      - "tratar pool como budget limitado"
+      - "investigar hold time, downstream latency, queue wait e leaks"
+      - "considerar limites globais de connections e backpressure"
+    forbidden_behaviors:
+      - "aumentar o pool indefinidamente sem avaliar downstream"

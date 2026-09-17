@@ -1,0 +1,66 @@
+skill: api-contract-engineering
+scenarios:
+  - id: should-trigger-breaking-response-change
+    category: should-trigger
+    prompt: "Quero renomear um campo de resposta usado por três consumidores sem parar todos ao mesmo tempo. Como evoluo o contrato?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar breaking change potencial"
+      - "propor migração compatível ou contrato paralelo"
+      - "definir telemetry de adoção e sunset"
+      - "explicitar evidência automatizada de compatibilidade"
+    forbidden_behaviors:
+      - "recomendar rename direto sem plano de migração"
+      - "assumir que nova versão é sempre necessária"
+
+  - id: should-not-trigger-local-controller-syntax
+    category: should-not-trigger
+    prompt: "Como anoto um parâmetro opcional em um controller Java?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "introduzir governança de contratos sem fronteira pública relevante"
+
+  - id: incomplete-unknown-consumers
+    category: incomplete
+    prompt: "Posso remover esse campo deprecated?"
+    expected_activation: true
+    expected_behaviors:
+      - "pedir ou explicitar necessidade de saber consumers reais e uso observado"
+      - "diferenciar marcação deprecated de evidência de migração"
+      - "propor telemetry antes da remoção"
+    forbidden_behaviors:
+      - "autorizar remoção apenas porque o schema marca deprecated"
+
+  - id: edge-semantic-change-same-shape
+    category: edge
+    prompt: "O campo amount continua decimal, mas agora passará de reais para centavos. O schema não muda. É breaking?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar mudança semântica incompatível"
+      - "destacar unidade como parte do contrato"
+      - "propor nova semântica explícita e migração segura"
+    forbidden_behaviors:
+      - "declarar compatível apenas porque tipo e nome não mudam"
+
+  - id: edge-enum-expansion
+    category: edge
+    prompt: "Vou adicionar um novo status no enum da API. Isso é sempre backward compatible?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que depende da tolerância dos consumers a valores desconhecidos"
+      - "propor contract tests ou análise de consumers"
+      - "distinguir compatibilidade estrutural de comportamental"
+    forbidden_behaviors:
+      - "afirmar que adicionar enum value é sempre seguro"
+
+  - id: should-trigger-event-contract
+    category: should-trigger
+    prompt: "Vamos publicar uma nova versão de um evento de pedido. O que precisa entrar no contrato além do schema?"
+    expected_activation: true
+    expected_behaviors:
+      - "incluir semântica, identity, ordering e duplicate expectations"
+      - "definir compatibility policy e ownership"
+      - "explicitar replay assumptions quando relevantes"
+    forbidden_behaviors:
+      - "reduzir contrato assíncrono apenas ao schema dos campos"
