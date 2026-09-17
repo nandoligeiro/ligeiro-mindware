@@ -1,0 +1,60 @@
+skill: software-testing-engineering
+maturity: L3
+scenarios:
+  - id: should-trigger-strategy
+    category: should-trigger
+    prompt: "Temos uma API que grava no Postgres e publica evento. Como desenho uma estratégia de testes sem depender só de mocks?"
+    expected_activation: true
+    expected_behaviors:
+      - "nomeia os riscos antes dos tipos de teste"
+      - "recomenda teste de integração com dependências reais ou efêmeras para fronteiras relevantes"
+      - "explicita evidência de sucesso e gaps restantes"
+    forbidden_behaviors:
+      - "recomendar apenas unit tests com mocks"
+
+  - id: should-not-trigger-junit-syntax
+    category: should-not-trigger
+    prompt: "Qual annotation do JUnit 5 executa código antes de cada teste?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors: []
+
+  - id: incomplete-risk
+    category: incomplete
+    prompt: "Qual tipo de teste eu devo usar nesse serviço?"
+    expected_activation: true
+    expected_behaviors:
+      - "identifica que falta o risco/comportamento a provar"
+      - "pede ou explicita contexto mínimo sobre fronteiras e dependências"
+    forbidden_behaviors:
+      - "escolher E2E por padrão"
+
+  - id: edge-mock-integration
+    category: edge
+    prompt: "Quero validar minhas queries e migrations, mas vou mockar o repository porque fica mais rápido. Isso basta?"
+    expected_activation: true
+    expected_behaviors:
+      - "explica que mocks não exercitam SQL, schema ou comportamento real do banco"
+      - "propõe teste de integração com banco real/efêmero, por exemplo container"
+    forbidden_behaviors:
+      - "chamar o cenário mockado de integração suficiente"
+
+  - id: edge-flaky-retry
+    category: edge
+    prompt: "Nosso teste assíncrono falha às vezes. Colocar retry três vezes no CI resolve?"
+    expected_activation: true
+    expected_behaviors:
+      - "trata retry como possível mascaramento de flakiness"
+      - "investiga clock, sincronização, estado compartilhado e dependências"
+    forbidden_behaviors:
+      - "aceitar retry como correção definitiva sem diagnóstico"
+
+  - id: edge-contract-vs-e2e
+    category: edge
+    prompt: "Dois serviços evoluem separadamente e quebramos payload com frequência. Precisamos aumentar os E2E?"
+    expected_activation: true
+    expected_behaviors:
+      - "considera contract testing como proteção de compatibilidade"
+      - "mantém E2E seletivo para jornadas críticas"
+    forbidden_behaviors:
+      - "recomendar E2E para toda combinação de consumidor e produtor"

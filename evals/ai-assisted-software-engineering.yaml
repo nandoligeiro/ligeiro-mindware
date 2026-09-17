@@ -1,0 +1,59 @@
+skill: ai-assisted-software-engineering
+scenarios:
+  - id: should-trigger-code-change-with-agent
+    category: should-trigger
+    prompt: "Quero usar um agente para alterar três serviços, rodar testes e abrir o PR. Como estruturo contexto, tools, permissões e verificação?"
+    expected_activation: true
+    expected_behaviors:
+      - "separa intent, context, plan, execute, verify, evaluate e learn"
+      - "define gates determinísticos antes de aceitar a mudança"
+      - "aplica least privilege às tools"
+    forbidden_behaviors:
+      - "aceitar a declaração de sucesso do agente como prova suficiente"
+
+  - id: should-not-trigger-simple-java-question
+    category: should-not-trigger
+    prompt: "Como funciona record no Java 21?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors: []
+
+  - id: incomplete-tool-permissions
+    category: incomplete
+    prompt: "Quero que um agente publique automaticamente em produção usando MCP."
+    expected_activation: true
+    expected_behaviors:
+      - "identifica como ausentes escopo de permissão, ambiente, gates e política de aprovação"
+      - "não assume que MCP resolve autorização"
+    forbidden_behaviors:
+      - "recomendar credencial ampla de produção sem controles"
+
+  - id: edge-llm-as-judge
+    category: edge
+    prompt: "O agente escreveu o código e outro agente revisou e disse que está certo. Isso já serve como validação?"
+    expected_activation: true
+    expected_behaviors:
+      - "distingue avaliação semântica probabilística de evidência determinística"
+      - "recomenda build, testes, contratos ou verificadores apropriados ao risco"
+    forbidden_behaviors:
+      - "tratar consenso entre modelos como prova objetiva"
+
+  - id: edge-agent-loop-budget
+    category: edge
+    prompt: "Meu agente entra em loop tentando corrigir os testes e já fez dezenas de alterações. Como desenhar isso melhor?"
+    expected_activation: true
+    expected_behaviors:
+      - "recomenda stop condition, budget, checkpoint e escalonamento"
+      - "reduz escopo por incremento verificável"
+    forbidden_behaviors:
+      - "recomendar retry ilimitado"
+
+  - id: edge-context-overload
+    category: edge
+    prompt: "Para garantir que o agente não perca nada, estou colocando o repositório e toda documentação no contexto em cada chamada. É uma boa estratégia?"
+    expected_activation: true
+    expected_behaviors:
+      - "recomenda progressive disclosure e recuperação seletiva"
+      - "explica que mais contexto não implica mais sinal"
+    forbidden_behaviors:
+      - "recomendar context dump como padrão"

@@ -1,0 +1,70 @@
+skill: distributed-systems-engineering
+scenarios:
+  - id: should-trigger-retry-duplicate-side-effect
+    category: should-trigger
+    prompt: "Tenho um serviço que chama uma API remota para efetuar uma cobrança. Em alguns timeouts eu faço retry, mas estou com medo de cobrar duas vezes. Como desenho isso?"
+    expected_activation: true
+    expected_behaviors:
+      - "explicar que timeout não prova que a cobrança não ocorreu"
+      - "propor identidade estável da operação e idempotência ou reconciliação"
+      - "definir retry limitado com backoff e jitter somente para falhas transitórias"
+      - "explicitar failure mode residual e observabilidade"
+    forbidden_behaviors:
+      - "recomendar retry cego"
+      - "gerar uma nova idempotency key a cada tentativa"
+      - "afirmar exactly-once global sem qualificar a fronteira"
+
+  - id: should-not-trigger-local-spring-syntax
+    category: should-not-trigger
+    prompt: "Como configuro um @RestController no Spring Boot para retornar HTTP 201?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors:
+      - "introduzir saga, outbox ou CAP sem necessidade"
+
+  - id: incomplete-ownership-without-storage-semantics
+    category: incomplete
+    prompt: "Tenho vários workers pegando o mesmo job e pensei em usar lease. Isso resolve?"
+    expected_activation: true
+    expected_behaviors:
+      - "perguntar ou explicitar qual recurso final recebe a escrita e se consegue validar fencing/version"
+      - "diferenciar claim, lease e fencing"
+      - "não assumir que lease sozinho impede stale owner"
+    forbidden_behaviors:
+      - "declarar lease suficiente em qualquer cenário"
+      - "inventar características do storage não fornecidas"
+
+  - id: edge-ack-after-external-effect-crash-window
+    category: edge
+    prompt: "Meu consumer lê uma mensagem, chama um vendor REST com sucesso e só depois faz ack no broker. Se o processo cair depois do 200 e antes do ack, como evitar efeito duplicado quando a mensagem voltar?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar a janela crash-after-effect-before-ack"
+      - "separar ack de transporte de sucesso de negócio"
+      - "recomendar operation id estável e idempotência no vendor ou camada intermediária"
+      - "se idempotência forte não for possível, propor registro durável/reconciliação/compensação"
+    forbidden_behaviors:
+      - "mover simplesmente o ack para antes da chamada e considerar o problema resolvido"
+      - "afirmar que o broker garante exatamente uma execução do efeito REST"
+
+  - id: edge-lease-with-stale-owner
+    category: edge
+    prompt: "Worker A pegou um lease de 30s, ficou pausado por GC, o lease expirou e o Worker B assumiu. Quando A voltou ele ainda conseguiu gravar. O que faltou?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar stale owner"
+      - "explicar fencing token monotônico"
+      - "explicar que o recurso protegido precisa rejeitar token antigo"
+    forbidden_behaviors:
+      - "sugerir apenas aumentar o TTL do lease como solução principal"
+
+  - id: should-trigger-dual-write-outbox
+    category: should-trigger
+    prompt: "Preciso salvar uma alteração no banco e publicar um evento, mas às vezes o processo cai entre as duas operações. Qual padrão faz sentido?"
+    expected_activation: true
+    expected_behaviors:
+      - "identificar dual write e janela de inconsistência"
+      - "propor transactional outbox quando banco e outbox compartilham transação local"
+      - "lembrar que o relay pode republicar e consumidores devem tolerar duplicatas"
+    forbidden_behaviors:
+      - "afirmar que outbox entrega exactly-once end-to-end"
