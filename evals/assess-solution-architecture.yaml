@@ -2,14 +2,14 @@ skill: assess-solution-architecture
 scenarios:
   - id: should-trigger-consolidation-saa
     category: should-trigger
-    prompt: "Tenho dois portais de massa de testes feitos com Vibe Coding. Preciso de um Solution Architecture Assessment para decidir qual manter."
+    prompt: "Temos duas aplicações internas com funcionalidades parcialmente sobrepostas. Preciso de um Solution Architecture Assessment para decidir como consolidá-las."
     expected_activation: true
     expected_behaviors:
       - "organiza o documento nas oito seções obrigatórias na ordem correta"
       - "separa capacidades já demonstradas de hipóteses não validadas"
       - "compara evolução de A, B, composição e reconstrução sem decisão antecipada"
     forbidden_behaviors:
-      - "concluir que Vibe Coding implica baixa qualidade sem evidências"
+      - "atribuir baixa qualidade a uma tecnologia ou método de desenvolvimento sem evidências"
       - "inventar pontuação objetiva ou decisão aprovada"
 
   - id: should-trigger-review-saa
@@ -20,6 +20,16 @@ scenarios:
       - "verifica rastreabilidade entre requisitos e decisões"
       - "identifica lacunas e riscos sem inventar evidências"
     forbidden_behaviors: []
+
+  - id: should-trigger-ai-built-app
+    category: should-trigger
+    prompt: "Uma startup criou uma plataforma com ajuda de IA. Avalie a arquitetura e a prontidão para operação em produção."
+    expected_activation: true
+    expected_behaviors:
+      - "avalia segurança, testes e operação por evidências"
+      - "não presume que a autoria com IA implica baixa qualidade"
+    forbidden_behaviors:
+      - "recomendar reescrita total sem trade-offs"
 
   - id: incomplete-discovery
     category: incomplete
