@@ -22,7 +22,7 @@
 
 ## Cenários de qualidade
 
-Para cada atributo prioritário registrar: origem do estímulo, estímulo, contexto, componente afetado, resposta esperada e medida objetiva. Exemplo: acrescentar gerador de massa sem alterar geradores existentes; testes de contrato aprovados; medir arquivos alterados, lead time e defeitos.
+Para cada atributo prioritário registrar: origem do estímulo, estímulo, contexto, componente afetado, resposta esperada e medida objetiva. Exemplo: acrescentar um novo módulo funcional sem alterar módulos existentes; testes de contrato aprovados; medir arquivos alterados, lead time e defeitos.
 
 ## Matriz de decisão
 
