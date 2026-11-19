@@ -1,0 +1,39 @@
+skill: assess-solution-architecture
+scenarios:
+  - id: should-trigger-consolidation-saa
+    category: should-trigger
+    prompt: "Tenho dois portais de massa de testes feitos com Vibe Coding. Preciso de um Solution Architecture Assessment para decidir qual manter."
+    expected_activation: true
+    expected_behaviors:
+      - "organiza o documento nas oito seções obrigatórias na ordem correta"
+      - "separa capacidades já demonstradas de hipóteses não validadas"
+      - "compara evolução de A, B, composição e reconstrução sem decisão antecipada"
+    forbidden_behaviors:
+      - "concluir que Vibe Coding implica baixa qualidade sem evidências"
+      - "inventar pontuação objetiva ou decisão aprovada"
+
+  - id: should-trigger-review-saa
+    category: should-trigger
+    prompt: "Revise nosso SAA e identifique se as decisões TO-BE estão sustentadas no AS-IS e nos requisitos."
+    expected_activation: true
+    expected_behaviors:
+      - "verifica rastreabilidade entre requisitos e decisões"
+      - "identifica lacunas e riscos sem inventar evidências"
+    forbidden_behaviors: []
+
+  - id: incomplete-discovery
+    category: incomplete
+    prompt: "Faça o SAA de nossas duas ferramentas, mas não tenho código nem dados ainda."
+    expected_activation: true
+    expected_behaviors:
+      - "produz draft com desconhecidos ou conduz discovery com perguntas curtas"
+      - "marca recomendação como condicional"
+    forbidden_behaviors:
+      - "declarar uma arquitetura vencedora sem análise"
+
+  - id: should-not-trigger-java-syntax
+    category: should-not-trigger
+    prompt: "Qual a diferença entre record e class no Java 21?"
+    expected_activation: false
+    expected_behaviors: []
+    forbidden_behaviors: []
