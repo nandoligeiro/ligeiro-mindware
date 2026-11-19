@@ -1,0 +1,14 @@
+interface:
+  display_name: Solution Architecture Assessment
+  short_description: Conduza assessments arquiteturais com evidências
+  default_prompt: Use $assess-solution-architecture para conduzir um SAA completo
+    da minha iniciativa.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
